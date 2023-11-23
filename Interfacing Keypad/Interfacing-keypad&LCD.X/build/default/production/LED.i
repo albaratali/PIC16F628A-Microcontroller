@@ -1184,11 +1184,11 @@ extern __bank0 __bit __timeout;
 # 9 "LED.c" 2
 
 # 1 "./LED.h" 1
-# 44 "./LED.h"
+# 43 "./LED.h"
 static void init_display_controller(void);
-void clcd_print(const char *str, unsigned char addr);
-void clcd_putch(const char data, unsigned char addr);
-void clcd_write(unsigned char byte, unsigned char mode) ;
+void clcd_putch(const unsigned char data, unsigned char addr);
+void clcd_write(unsigned char byte, unsigned char mode);
+void ClearLCDScreen(void);
 # 10 "LED.c" 2
 
 
@@ -1229,11 +1229,12 @@ static void init_display_controller(void)
     _delay((unsigned long)((100)*(20000000/4000000.0)));
 }
 
-void clcd_putch(const char data, unsigned char addr)
+void clcd_putch(const unsigned char data, unsigned char addr)
 {
     clcd_write(addr, 0);
     clcd_write(data, 1);
 }
+
 
 void clcd_write(unsigned char byte, unsigned char mode)
 {
@@ -1250,4 +1251,9 @@ void clcd_write(unsigned char byte, unsigned char mode)
     RA7 = 0;
 
     _delay((unsigned long)((4100)*(20000000/4000000.0)));
+}
+void ClearLCDScreen(void)
+{
+    clcd_write(0x01, 0);
+    _delay((unsigned long)((500)*(20000000/4000000.0)));
 }

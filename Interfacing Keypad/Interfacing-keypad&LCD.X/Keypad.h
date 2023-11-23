@@ -1,6 +1,6 @@
 /* 
  * File:   Keypad.h
- * Author: faizan
+ * Author: abamishu
  *
  * Created on November 18, 2023, 3:19 PM
  */
@@ -8,6 +8,7 @@
 #ifndef KEYPAD_H
 #define	KEYPAD_H
 
+#define _XTAL_FREQ      20000000
 #define Keypad_PORT         PORTB
 #define Keypad_PORT_Dir     TRISB
 
@@ -28,7 +29,8 @@
 
 #define ALL_RELEASED                        0xFF 
 
-char GetKey(void);
+static unsigned char scan_keypad(void);
+unsigned char GetKey(void);
 
 
 #endif	/* KEYPAD_H */

@@ -1,0 +1,2107 @@
+
+
+Microchip MPLAB XC8 Assembler V2.45 build 20230818022343 
+                                                                                               Thu Nov 23 10:48:32 2023
+
+Microchip MPLAB XC8 C Compiler v2.45 (Free license) build 20230818022343 Og1 
+     1                           	processor	16F628A
+     2                           	pagewidth 120
+     3                           	opt	flic
+     4                           	psect	cinit,global,class=CODE,merge=1,delta=2
+     5                           	psect	cstackCOMMON,global,class=COMMON,space=1,delta=1,noexec
+     6                           	psect	maintext,global,class=CODE,split=1,delta=2
+     7                           	psect	text1,local,class=CODE,merge=1,delta=2
+     8                           	psect	text2,local,class=CODE,merge=1,delta=2
+     9                           	psect	text3,local,class=CODE,merge=1,delta=2
+    10                           	psect	text4,local,class=CODE,merge=1,delta=2
+    11                           	psect	text5,local,class=CODE,merge=1,delta=2
+    12                           	psect	text6,local,class=CODE,merge=1,delta=2
+    13                           	psect	text7,local,class=CODE,merge=1,delta=2
+    14                           	psect	text8,local,class=CODE,merge=1,delta=2
+    15                           	psect	config,global,abs,ovrld,class=CONFIG,space=4,delta=2,noexec
+    16                           	dabs	1,0x7E,2
+    17     0000                     
+    18                           ; Generated 12/10/2023 GMT
+    19                           ; 
+    20                           ; Copyright © 2023, Microchip Technology Inc. and its subsidiaries ("Microchip")
+    21                           ; All rights reserved.
+    22                           ; 
+    23                           ; This software is developed by Microchip Technology Inc. and its subsidiaries ("Microch
+      +                          ip").
+    24                           ; 
+    25                           ; Redistribution and use in source and binary forms, with or without modification, are
+    26                           ; permitted provided that the following conditions are met:
+    27                           ; 
+    28                           ;     1. Redistributions of source code must retain the above copyright notice, this lis
+      +                          t of
+    29                           ;        conditions and the following disclaimer.
+    30                           ; 
+    31                           ;     2. Redistributions in binary form must reproduce the above copyright notice, this 
+      +                          list
+    32                           ;        of conditions and the following disclaimer in the documentation and/or other
+    33                           ;        materials provided with the distribution. Publication is not required when
+    34                           ;        this file is used in an embedded application.
+    35                           ; 
+    36                           ;     3. Microchip's name may not be used to endorse or promote products derived from th
+      +                          is
+    37                           ;        software without specific prior written permission.
+    38                           ; 
+    39                           ; THIS SOFTWARE IS PROVIDED BY MICROCHIP "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES,
+    40                           ; INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS F
+      +                          OR
+    41                           ; PURPOSE ARE DISCLAIMED.  IN NO EVENT SHALL MICROCHIP BE LIABLE FOR ANY DIRECT, INDIREC
+      +                          T,
+    42                           ; INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING BUT NOT LIMITED TO
+    43                           ; PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA OR PROFITS; OR BUSINESS
+    44                           ; INTERRUPTION) HOWSOEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, ST
+      +                          RICT
+    45                           ; LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE U
+      +                          SE OF
+    46                           ; THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+    47                           ; 
+    48                           ; 
+    49                           ; Code-generator required, PIC16F628A Definitions
+    50                           ; 
+    51                           ; SFR Addresses
+    52     0000                     	;# 
+    53     0001                     	;# 
+    54     0002                     	;# 
+    55     0003                     	;# 
+    56     0004                     	;# 
+    57     0005                     	;# 
+    58     0006                     	;# 
+    59     000A                     	;# 
+    60     000B                     	;# 
+    61     000C                     	;# 
+    62     000E                     	;# 
+    63     000E                     	;# 
+    64     000F                     	;# 
+    65     0010                     	;# 
+    66     0011                     	;# 
+    67     0012                     	;# 
+    68     0015                     	;# 
+    69     0015                     	;# 
+    70     0016                     	;# 
+    71     0017                     	;# 
+    72     0018                     	;# 
+    73     0019                     	;# 
+    74     001A                     	;# 
+    75     001F                     	;# 
+    76     0081                     	;# 
+    77     0085                     	;# 
+    78     0086                     	;# 
+    79     008C                     	;# 
+    80     008E                     	;# 
+    81     0092                     	;# 
+    82     0098                     	;# 
+    83     0099                     	;# 
+    84     009A                     	;# 
+    85     009B                     	;# 
+    86     009C                     	;# 
+    87     009D                     	;# 
+    88     009F                     	;# 
+    89     0000                     	;# 
+    90     0001                     	;# 
+    91     0002                     	;# 
+    92     0003                     	;# 
+    93     0004                     	;# 
+    94     0005                     	;# 
+    95     0006                     	;# 
+    96     000A                     	;# 
+    97     000B                     	;# 
+    98     000C                     	;# 
+    99     000E                     	;# 
+   100     000E                     	;# 
+   101     000F                     	;# 
+   102     0010                     	;# 
+   103     0011                     	;# 
+   104     0012                     	;# 
+   105     0015                     	;# 
+   106     0015                     	;# 
+   107     0016                     	;# 
+   108     0017                     	;# 
+   109     0018                     	;# 
+   110     0019                     	;# 
+   111     001A                     	;# 
+   112     001F                     	;# 
+   113     0081                     	;# 
+   114     0085                     	;# 
+   115     0086                     	;# 
+   116     008C                     	;# 
+   117     008E                     	;# 
+   118     0092                     	;# 
+   119     0098                     	;# 
+   120     0099                     	;# 
+   121     009A                     	;# 
+   122     009B                     	;# 
+   123     009C                     	;# 
+   124     009D                     	;# 
+   125     009F                     	;# 
+   126     0000                     	;# 
+   127     0001                     	;# 
+   128     0002                     	;# 
+   129     0003                     	;# 
+   130     0004                     	;# 
+   131     0005                     	;# 
+   132     0006                     	;# 
+   133     000A                     	;# 
+   134     000B                     	;# 
+   135     000C                     	;# 
+   136     000E                     	;# 
+   137     000E                     	;# 
+   138     000F                     	;# 
+   139     0010                     	;# 
+   140     0011                     	;# 
+   141     0012                     	;# 
+   142     0015                     	;# 
+   143     0015                     	;# 
+   144     0016                     	;# 
+   145     0017                     	;# 
+   146     0018                     	;# 
+   147     0019                     	;# 
+   148     001A                     	;# 
+   149     001F                     	;# 
+   150     0081                     	;# 
+   151     0085                     	;# 
+   152     0086                     	;# 
+   153     008C                     	;# 
+   154     008E                     	;# 
+   155     0092                     	;# 
+   156     0098                     	;# 
+   157     0099                     	;# 
+   158     009A                     	;# 
+   159     009B                     	;# 
+   160     009C                     	;# 
+   161     009D                     	;# 
+   162     009F                     	;# 
+   163     0000                     	;# 
+   164     0001                     	;# 
+   165     0002                     	;# 
+   166     0003                     	;# 
+   167     0004                     	;# 
+   168     0005                     	;# 
+   169     0006                     	;# 
+   170     000A                     	;# 
+   171     000B                     	;# 
+   172     000C                     	;# 
+   173     000E                     	;# 
+   174     000E                     	;# 
+   175     000F                     	;# 
+   176     0010                     	;# 
+   177     0011                     	;# 
+   178     0012                     	;# 
+   179     0015                     	;# 
+   180     0015                     	;# 
+   181     0016                     	;# 
+   182     0017                     	;# 
+   183     0018                     	;# 
+   184     0019                     	;# 
+   185     001A                     	;# 
+   186     001F                     	;# 
+   187     0081                     	;# 
+   188     0085                     	;# 
+   189     0086                     	;# 
+   190     008C                     	;# 
+   191     008E                     	;# 
+   192     0092                     	;# 
+   193     0098                     	;# 
+   194     0099                     	;# 
+   195     009A                     	;# 
+   196     009B                     	;# 
+   197     009C                     	;# 
+   198     009D                     	;# 
+   199     009F                     	;# 
+   200     001F                     _CMCON	set	31
+   201     0005                     _PORTA	set	5
+   202     0006                     _PORTB	set	6
+   203     002B                     _RA3	set	43
+   204     002A                     _RA2	set	42
+   205     0029                     _RA1	set	41
+   206     0028                     _RA0	set	40
+   207     002E                     _RA6	set	46
+   208     002F                     _RA7	set	47
+   209     0037                     _RB7	set	55
+   210     0036                     _RB6	set	54
+   211     0035                     _RB5	set	53
+   212     0034                     _RB4	set	52
+   213     0033                     _RB3	set	51
+   214     0032                     _RB2	set	50
+   215     0031                     _RB1	set	49
+   216     0030                     _RB0	set	48
+   217     0081                     _OPTION_REG	set	129
+   218     0086                     _TRISB	set	134
+   219     042B                     _TRISA3	set	1067
+   220     042A                     _TRISA2	set	1066
+   221     0429                     _TRISA1	set	1065
+   222     0428                     _TRISA0	set	1064
+   223     042E                     _TRISA6	set	1070
+   224     042F                     _TRISA7	set	1071
+   225                           
+   226                           	psect	cinit
+   227     07FE                     start_initialization:	
+   228                           ; #config settings
+   229                           
+   230     07FE                     __initialization:
+   231     07FE                     end_of_initialization:	
+   232                           ;End of C runtime variable initialization code
+   233                           
+   234     07FE                     __end_of__initialization:
+   235     07FE  0183               	clrf	3
+   236     07FF  2D8B               	ljmp	_main	;jump to C main() function
+   237                           
+   238                           	psect	cstackCOMMON
+   239     0070                     __pcstackCOMMON:
+   240     0070                     ?_InitKeypad:
+   241     0070                     ??_InitKeypad:	
+   242                           ; 1 bytes @ 0x0
+   243                           
+   244     0070                     ?_READ_SWITCHES:	
+   245                           ; 1 bytes @ 0x0
+   246                           
+   247     0070                     ??_READ_SWITCHES:	
+   248                           ; 1 bytes @ 0x0
+   249                           
+   250     0070                     ?_GetKey:	
+   251                           ; 1 bytes @ 0x0
+   252                           
+   253     0070                     ?_ToggleEpinOfLCD:	
+   254                           ; 1 bytes @ 0x0
+   255                           
+   256     0070                     ??_ToggleEpinOfLCD:	
+   257                           ; 1 bytes @ 0x0
+   258                           
+   259     0070                     ?_WriteCommandToLCD:	
+   260                           ; 1 bytes @ 0x0
+   261                           
+   262     0070                     ?_WriteDataToLCD:	
+   263                           ; 1 bytes @ 0x0
+   264                           
+   265     0070                     ?_InitLCD:	
+   266                           ; 1 bytes @ 0x0
+   267                           
+   268     0070                     ?_ClearLCDScreen:	
+   269                           ; 1 bytes @ 0x0
+   270                           
+   271     0070                     ?_main:	
+   272                           ; 1 bytes @ 0x0
+   273                           
+   274                           
+   275                           ; 1 bytes @ 0x0
+   276     0070                     	ds	1
+   277     0071                     ??_WriteCommandToLCD:
+   278     0071                     ??_WriteDataToLCD:	
+   279                           ; 1 bytes @ 0x1
+   280                           
+   281                           
+   282                           ; 1 bytes @ 0x1
+   283     0071                     	ds	1
+   284     0072                     WriteCommandToLCD@Command:
+   285     0072                     WriteDataToLCD@LCDChar:	
+   286                           ; 1 bytes @ 0x2
+   287                           
+   288                           
+   289                           ; 1 bytes @ 0x2
+   290     0072                     	ds	1
+   291     0073                     ??_GetKey:
+   292     0073                     ??_InitLCD:	
+   293                           ; 1 bytes @ 0x3
+   294                           
+   295     0073                     ??_ClearLCDScreen:	
+   296                           ; 1 bytes @ 0x3
+   297                           
+   298     0073                     GetKey@key:	
+   299                           ; 1 bytes @ 0x3
+   300                           
+   301                           
+   302                           ; 1 bytes @ 0x3
+   303     0073                     	ds	2
+   304     0075                     ??_main:
+   305     0075                     main@Key:	
+   306                           ; 1 bytes @ 0x5
+   307                           
+   308                           
+   309                           ; 1 bytes @ 0x5
+   310     0075                     	ds	1
+   311                           
+   312                           	psect	maintext
+   313     058B                     __pmaintext:	
+   314 ;;
+   315 ;;Main: autosize = 0, tempsize = 0, incstack = 0, save=0
+   316 ;;
+   317 ;; *************** function _main *****************
+   318 ;; Defined at:
+   319 ;;		line 17 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing C
+      +ode/Code/main.c"
+   320 ;; Parameters:    Size  Location     Type
+   321 ;;		None
+   322 ;; Auto vars:     Size  Location     Type
+   323 ;;  Key             1    5[COMMON] unsigned char 
+   324 ;; Return value:  Size  Location     Type
+   325 ;;                  1    wreg      void 
+   326 ;; Registers used:
+   327 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   328 ;; Tracked objects:
+   329 ;;		On entry : B00/0
+   330 ;;		On exit  : 0/0
+   331 ;;		Unchanged: 0/0
+   332 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   333 ;;      Params:         0       0       0       0
+   334 ;;      Locals:         1       0       0       0
+   335 ;;      Temps:          0       0       0       0
+   336 ;;      Totals:         1       0       0       0
+   337 ;;Total ram usage:        1 bytes
+   338 ;; Hardware stack levels required when called: 3
+   339 ;; This function calls:
+   340 ;;		_ClearLCDScreen
+   341 ;;		_GetKey
+   342 ;;		_InitKeypad
+   343 ;;		_InitLCD
+   344 ;;		_WriteDataToLCD
+   345 ;; This function is called by:
+   346 ;;		Startup code after reset
+   347 ;; This function uses a non-reentrant model
+   348 ;;
+   349                           
+   350     058B                     _main:	
+   351                           ;psect for function _main
+   352                           
+   353     058B                     l913:	
+   354                           ;incstack = 0
+   355                           ; Regs used in _main: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   356                           
+   357     058B  3007               	movlw	7
+   358     058C  1283               	bcf	3,5	;RP0=0, select bank0
+   359     058D  1303               	bcf	3,6	;RP1=0, select bank0
+   360     058E  009F               	movwf	31	;volatile
+   361     058F                     l915:
+   362     058F  2572               	fcall	_InitKeypad
+   363     0590                     l917:
+   364     0590  25EF               	fcall	_InitLCD
+   365     0591                     l919:
+   366     0591  257E               	fcall	_GetKey
+   367     0592  00F5               	movwf	main@Key
+   368     0593                     l921:
+   369     0593  2566               	fcall	_ClearLCDScreen
+   370     0594                     l923:
+   371     0594  0875               	movf	main@Key,w
+   372     0595  25CC               	fcall	_WriteDataToLCD
+   373     0596  2D91               	goto	l919
+   374     0597  2800               	ljmp	start
+   375     0598                     __end_of_main:
+   376                           
+   377                           	psect	text1
+   378     05CC                     __ptext1:	
+   379 ;; *************** function _WriteDataToLCD *****************
+   380 ;; Defined at:
+   381 ;;		line 27 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing C
+      +ode/Code/LCD.c"
+   382 ;; Parameters:    Size  Location     Type
+   383 ;;  LCDChar         1    wreg     unsigned char 
+   384 ;; Auto vars:     Size  Location     Type
+   385 ;;  LCDChar         1    2[COMMON] unsigned char 
+   386 ;; Return value:  Size  Location     Type
+   387 ;;                  1    wreg      void 
+   388 ;; Registers used:
+   389 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   390 ;; Tracked objects:
+   391 ;;		On entry : 0/0
+   392 ;;		On exit  : 0/0
+   393 ;;		Unchanged: 0/0
+   394 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   395 ;;      Params:         0       0       0       0
+   396 ;;      Locals:         1       0       0       0
+   397 ;;      Temps:          1       0       0       0
+   398 ;;      Totals:         2       0       0       0
+   399 ;;Total ram usage:        2 bytes
+   400 ;; Hardware stack levels used: 1
+   401 ;; Hardware stack levels required when called: 1
+   402 ;; This function calls:
+   403 ;;		_ToggleEpinOfLCD
+   404 ;; This function is called by:
+   405 ;;		_main
+   406 ;;		_WriteStringToLCD
+   407 ;; This function uses a non-reentrant model
+   408 ;;
+   409                           
+   410     05CC                     _WriteDataToLCD:	
+   411                           ;psect for function _WriteDataToLCD
+   412                           
+   413                           
+   414                           ;incstack = 0
+   415                           ; Regs used in _WriteDataToLCD: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   416                           ;WriteDataToLCD@LCDChar stored from wreg
+   417     05CC  00F2               	movwf	WriteDataToLCD@LCDChar
+   418     05CD                     l849:
+   419                           
+   420                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 27: void WriteDataToLCD(char LCDChar);C:/Users/faizan/OneDri
+      +                          ve/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing Code/Code/LC
+      +                          D.c: 28: {;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628
+      +                          A Keypad Interfacing Code/Code/LCD.c: 29:  RA6 = 1;
+   421     05CD  1283               	bcf	3,5	;RP0=0, select bank0
+   422     05CE  1303               	bcf	3,6	;RP1=0, select bank0
+   423     05CF  1705               	bsf	5,6	;volatile
+   424     05D0                     l851:
+   425                           
+   426                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 31:  PORTA &= 0xF0;
+   427     05D0  30F0               	movlw	240
+   428     05D1  00FF               	movwf	btemp+1
+   429     05D2  087F               	movf	btemp+1,w
+   430     05D3  0585               	andwf	5,f	;volatile
+   431                           
+   432                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 32:  PORTA |= ((LCDChar&0xF0)>>4);
+   433     05D4  0872               	movf	WriteDataToLCD@LCDChar,w
+   434     05D5  00F1               	movwf	??_WriteDataToLCD
+   435     05D6  3004               	movlw	4
+   436     05D7                     u355:
+   437     05D7  1003               	clrc
+   438     05D8  0CF1               	rrf	??_WriteDataToLCD,f
+   439     05D9  3EFF               	addlw	-1
+   440     05DA  1D03               	skipz
+   441     05DB  2DD7               	goto	u355
+   442     05DC  0871               	movf	??_WriteDataToLCD,w
+   443     05DD  390F               	andlw	15
+   444     05DE  00FF               	movwf	btemp+1
+   445     05DF  087F               	movf	btemp+1,w
+   446     05E0  0485               	iorwf	5,f	;volatile
+   447     05E1                     l853:
+   448                           
+   449                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 33:  ToggleEpinOfLCD();
+   450     05E1  2598               	fcall	_ToggleEpinOfLCD
+   451     05E2                     l855:
+   452                           
+   453                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 35:  PORTA &= 0xF0;
+   454     05E2  30F0               	movlw	240
+   455     05E3  00FF               	movwf	btemp+1
+   456     05E4  087F               	movf	btemp+1,w
+   457     05E5  1283               	bcf	3,5	;RP0=0, select bank0
+   458     05E6  1303               	bcf	3,6	;RP1=0, select bank0
+   459     05E7  0585               	andwf	5,f	;volatile
+   460     05E8                     l857:
+   461                           
+   462                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 36:  PORTA |= (LCDChar&0x0F);
+   463     05E8  0872               	movf	WriteDataToLCD@LCDChar,w
+   464     05E9  390F               	andlw	15
+   465     05EA  00FF               	movwf	btemp+1
+   466     05EB  087F               	movf	btemp+1,w
+   467     05EC  0485               	iorwf	5,f	;volatile
+   468     05ED                     l859:
+   469                           
+   470                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 37:  ToggleEpinOfLCD();
+   471     05ED  2598               	fcall	_ToggleEpinOfLCD
+   472     05EE                     l137:
+   473     05EE  0008               	return
+   474     05EF                     __end_of_WriteDataToLCD:
+   475                           
+   476                           	psect	text2
+   477     05EF                     __ptext2:	
+   478 ;; *************** function _InitLCD *****************
+   479 ;; Defined at:
+   480 ;;		line 41 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing C
+      +ode/Code/LCD.c"
+   481 ;; Parameters:    Size  Location     Type
+   482 ;;		None
+   483 ;; Auto vars:     Size  Location     Type
+   484 ;;		None
+   485 ;; Return value:  Size  Location     Type
+   486 ;;                  1    wreg      void 
+   487 ;; Registers used:
+   488 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+   489 ;; Tracked objects:
+   490 ;;		On entry : 0/0
+   491 ;;		On exit  : 0/0
+   492 ;;		Unchanged: 0/0
+   493 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   494 ;;      Params:         0       0       0       0
+   495 ;;      Locals:         0       0       0       0
+   496 ;;      Temps:          2       0       0       0
+   497 ;;      Totals:         2       0       0       0
+   498 ;;Total ram usage:        2 bytes
+   499 ;; Hardware stack levels used: 1
+   500 ;; Hardware stack levels required when called: 2
+   501 ;; This function calls:
+   502 ;;		_ToggleEpinOfLCD
+   503 ;;		_WriteCommandToLCD
+   504 ;; This function is called by:
+   505 ;;		_main
+   506 ;; This function uses a non-reentrant model
+   507 ;;
+   508                           
+   509     05EF                     _InitLCD:	
+   510                           ;psect for function _InitLCD
+   511                           
+   512     05EF                     l861:	
+   513                           ;incstack = 0
+   514                           ; Regs used in _InitLCD: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+   515                           
+   516                           
+   517                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 44:  RA7 = 0;
+   518     05EF  1283               	bcf	3,5	;RP0=0, select bank0
+   519     05F0  1303               	bcf	3,6	;RP1=0, select bank0
+   520     05F1  1385               	bcf	5,7	;volatile
+   521                           
+   522                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 45:  RA6 = 0;
+   523     05F2  1305               	bcf	5,6	;volatile
+   524                           
+   525                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 46:  RA0 = 0;
+   526     05F3  1005               	bcf	5,0	;volatile
+   527                           
+   528                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 47:  RA1 = 0;
+   529     05F4  1085               	bcf	5,1	;volatile
+   530                           
+   531                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 48:  RA2 = 0;
+   532     05F5  1105               	bcf	5,2	;volatile
+   533                           
+   534                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 49:  RA3 = 0;
+   535     05F6  1185               	bcf	5,3	;volatile
+   536                           
+   537                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 50:  TRISA7 = 0;
+   538     05F7  1683               	bsf	3,5	;RP0=1, select bank1
+   539     05F8  1303               	bcf	3,6	;RP1=0, select bank1
+   540     05F9  1385               	bcf	5,7	;volatile
+   541                           
+   542                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 51:  TRISA6 = 0;
+   543     05FA  1305               	bcf	5,6	;volatile
+   544                           
+   545                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 52:  TRISA0 = 0;
+   546     05FB  1005               	bcf	5,0	;volatile
+   547                           
+   548                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 53:  TRISA1 = 0;
+   549     05FC  1085               	bcf	5,1	;volatile
+   550                           
+   551                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 54:  TRISA2 = 0;
+   552     05FD  1105               	bcf	5,2	;volatile
+   553                           
+   554                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 55:  TRISA3 = 0;
+   555     05FE  1185               	bcf	5,3	;volatile
+   556     05FF                     l863:
+   557                           
+   558                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 58:    _delay((unsigned long)((40)*(4000000/4000.0)));
+   559     05FF  3034               	movlw	52
+   560     0600  00F4               	movwf	??_InitLCD+1
+   561     0601  30F1               	movlw	241
+   562     0602  00F3               	movwf	??_InitLCD
+   563     0603                     u377:
+   564     0603  0BF3               	decfsz	??_InitLCD,f
+   565     0604  2E03               	goto	u377
+   566     0605  0BF4               	decfsz	??_InitLCD+1,f
+   567     0606  2E03               	goto	u377
+   568     0607  2E08               	nop2
+   569     0608                     l865:
+   570                           
+   571                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 60:  PORTA &= 0xF0;
+   572     0608  30F0               	movlw	240
+   573     0609  00FF               	movwf	btemp+1
+   574     060A  087F               	movf	btemp+1,w
+   575     060B  1283               	bcf	3,5	;RP0=0, select bank0
+   576     060C  1303               	bcf	3,6	;RP1=0, select bank0
+   577     060D  0585               	andwf	5,f	;volatile
+   578     060E                     l867:
+   579                           
+   580                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 61:  PORTA |= 0x03;
+   581     060E  3003               	movlw	3
+   582     060F  00FF               	movwf	btemp+1
+   583     0610  087F               	movf	btemp+1,w
+   584     0611  0485               	iorwf	5,f	;volatile
+   585     0612                     l869:
+   586                           
+   587                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 62:  ToggleEpinOfLCD();
+   588     0612  2598               	fcall	_ToggleEpinOfLCD
+   589     0613                     l871:
+   590                           
+   591                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 64:    _delay((unsigned long)((6)*(4000000/4000.0)));
+   592     0613  3008               	movlw	8
+   593     0614  00F4               	movwf	??_InitLCD+1
+   594     0615  30C9               	movlw	201
+   595     0616  00F3               	movwf	??_InitLCD
+   596     0617                     u387:
+   597     0617  0BF3               	decfsz	??_InitLCD,f
+   598     0618  2E17               	goto	u387
+   599     0619  0BF4               	decfsz	??_InitLCD+1,f
+   600     061A  2E17               	goto	u387
+   601     061B  2E1C               	nop2
+   602     061C                     l873:
+   603                           
+   604                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 66:  PORTA &= 0xF0;
+   605     061C  30F0               	movlw	240
+   606     061D  00FF               	movwf	btemp+1
+   607     061E  087F               	movf	btemp+1,w
+   608     061F  1283               	bcf	3,5	;RP0=0, select bank0
+   609     0620  1303               	bcf	3,6	;RP1=0, select bank0
+   610     0621  0585               	andwf	5,f	;volatile
+   611     0622                     l875:
+   612                           
+   613                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 67:  PORTA |= 0x03;
+   614     0622  3003               	movlw	3
+   615     0623  00FF               	movwf	btemp+1
+   616     0624  087F               	movf	btemp+1,w
+   617     0625  0485               	iorwf	5,f	;volatile
+   618                           
+   619                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 68:  ToggleEpinOfLCD();
+   620     0626  2598               	fcall	_ToggleEpinOfLCD
+   621     0627                     l877:
+   622                           
+   623                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 70:    _delay((unsigned long)((300)*(4000000/4000000.0)));
+   624     0627  3063               	movlw	99
+   625     0628  00F3               	movwf	??_InitLCD
+   626     0629                     u397:
+   627     0629  0BF3               	decfsz	??_InitLCD,f
+   628     062A  2E29               	goto	u397
+   629     062B  2E2C               	nop2
+   630     062C                     l879:
+   631                           
+   632                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 72:  PORTA &= 0xF0;
+   633     062C  30F0               	movlw	240
+   634     062D  00FF               	movwf	btemp+1
+   635     062E  087F               	movf	btemp+1,w
+   636     062F  1283               	bcf	3,5	;RP0=0, select bank0
+   637     0630  1303               	bcf	3,6	;RP1=0, select bank0
+   638     0631  0585               	andwf	5,f	;volatile
+   639     0632                     l881:
+   640                           
+   641                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 73:  PORTA |= 0x03;
+   642     0632  3003               	movlw	3
+   643     0633  00FF               	movwf	btemp+1
+   644     0634  087F               	movf	btemp+1,w
+   645     0635  0485               	iorwf	5,f	;volatile
+   646     0636                     l883:
+   647                           
+   648                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 74:  ToggleEpinOfLCD();
+   649     0636  2598               	fcall	_ToggleEpinOfLCD
+   650                           
+   651                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 76:    _delay((unsigned long)((2)*(4000000/4000.0)));
+   652     0637  3003               	movlw	3
+   653     0638  00F4               	movwf	??_InitLCD+1
+   654     0639  3097               	movlw	151
+   655     063A  00F3               	movwf	??_InitLCD
+   656     063B                     u407:
+   657     063B  0BF3               	decfsz	??_InitLCD,f
+   658     063C  2E3B               	goto	u407
+   659     063D  0BF4               	decfsz	??_InitLCD+1,f
+   660     063E  2E3B               	goto	u407
+   661     063F  2E40               	nop2
+   662     0640                     l885:
+   663                           
+   664                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 78:  PORTA &= 0xF0;
+   665     0640  30F0               	movlw	240
+   666     0641  00FF               	movwf	btemp+1
+   667     0642  087F               	movf	btemp+1,w
+   668     0643  1283               	bcf	3,5	;RP0=0, select bank0
+   669     0644  1303               	bcf	3,6	;RP1=0, select bank0
+   670     0645  0585               	andwf	5,f	;volatile
+   671     0646                     l887:
+   672                           
+   673                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 79:  PORTA |= 0x02;
+   674     0646  1485               	bsf	5,1	;volatile
+   675     0647                     l889:
+   676                           
+   677                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 80:  ToggleEpinOfLCD();
+   678     0647  2598               	fcall	_ToggleEpinOfLCD
+   679     0648                     l891:
+   680                           
+   681                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 82:  _delay((unsigned long)((2)*(4000000/4000.0)));
+   682     0648  3003               	movlw	3
+   683     0649  00F4               	movwf	??_InitLCD+1
+   684     064A  3097               	movlw	151
+   685     064B  00F3               	movwf	??_InitLCD
+   686     064C                     u417:
+   687     064C  0BF3               	decfsz	??_InitLCD,f
+   688     064D  2E4C               	goto	u417
+   689     064E  0BF4               	decfsz	??_InitLCD+1,f
+   690     064F  2E4C               	goto	u417
+   691     0650  2E51               	nop2
+   692     0651                     l893:
+   693                           
+   694                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 84:  WriteCommandToLCD(0x28);
+   695     0651  3028               	movlw	40
+   696     0652  25A9               	fcall	_WriteCommandToLCD
+   697     0653                     l895:
+   698                           
+   699                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 85:  WriteCommandToLCD(0x0c);
+   700     0653  300C               	movlw	12
+   701     0654  25A9               	fcall	_WriteCommandToLCD
+   702     0655                     l897:
+   703                           
+   704                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 86:  WriteCommandToLCD(0x01);
+   705     0655  3001               	movlw	1
+   706     0656  25A9               	fcall	_WriteCommandToLCD
+   707     0657                     l899:
+   708                           
+   709                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 87:  WriteCommandToLCD(0x06);
+   710     0657  3006               	movlw	6
+   711     0658  25A9               	fcall	_WriteCommandToLCD
+   712     0659                     l140:
+   713     0659  0008               	return
+   714     065A                     __end_of_InitLCD:
+   715                           
+   716                           	psect	text3
+   717     0572                     __ptext3:	
+   718 ;; *************** function _InitKeypad *****************
+   719 ;; Defined at:
+   720 ;;		line 6 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing Co
+      +de/Code/Keypad.c"
+   721 ;; Parameters:    Size  Location     Type
+   722 ;;		None
+   723 ;; Auto vars:     Size  Location     Type
+   724 ;;		None
+   725 ;; Return value:  Size  Location     Type
+   726 ;;                  1    wreg      void 
+   727 ;; Registers used:
+   728 ;;		wreg, status,2, status,0, btemp+1
+   729 ;; Tracked objects:
+   730 ;;		On entry : 0/0
+   731 ;;		On exit  : 0/0
+   732 ;;		Unchanged: 0/0
+   733 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   734 ;;      Params:         0       0       0       0
+   735 ;;      Locals:         0       0       0       0
+   736 ;;      Temps:          0       0       0       0
+   737 ;;      Totals:         0       0       0       0
+   738 ;;Total ram usage:        0 bytes
+   739 ;; Hardware stack levels used: 1
+   740 ;; This function calls:
+   741 ;;		Nothing
+   742 ;; This function is called by:
+   743 ;;		_main
+   744 ;; This function uses a non-reentrant model
+   745 ;;
+   746                           
+   747     0572                     _InitKeypad:	
+   748                           ;psect for function _InitKeypad
+   749                           
+   750     0572                     l833:	
+   751                           ;incstack = 0
+   752                           ; Regs used in _InitKeypad: [wreg+status,2+status,0+btemp+1]
+   753                           
+   754                           
+   755                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 8:  PORTB = 0x00;
+   756     0572  1283               	bcf	3,5	;RP0=0, select bank0
+   757     0573  1303               	bcf	3,6	;RP1=0, select bank0
+   758     0574  0186               	clrf	6	;volatile
+   759     0575                     l835:
+   760                           
+   761                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 9:  TRISB = 0xF0;
+   762     0575  30F0               	movlw	240
+   763     0576  1683               	bsf	3,5	;RP0=1, select bank1
+   764     0577  1303               	bcf	3,6	;RP1=0, select bank1
+   765     0578  0086               	movwf	6	;volatile
+   766     0579                     l837:
+   767                           
+   768                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 12:  OPTION_REG &= 0x7F;
+   769     0579  307F               	movlw	127
+   770     057A  00FF               	movwf	btemp+1
+   771     057B  087F               	movf	btemp+1,w
+   772     057C  0581               	andwf	1,f	;volatile
+   773     057D                     l27:
+   774     057D  0008               	return
+   775     057E                     __end_of_InitKeypad:
+   776                           
+   777                           	psect	text4
+   778     057E                     __ptext4:	
+   779 ;; *************** function _GetKey *****************
+   780 ;; Defined at:
+   781 ;;		line 55 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing C
+      +ode/Code/Keypad.c"
+   782 ;; Parameters:    Size  Location     Type
+   783 ;;		None
+   784 ;; Auto vars:     Size  Location     Type
+   785 ;;  key             1    3[COMMON] unsigned char 
+   786 ;; Return value:  Size  Location     Type
+   787 ;;                  1    wreg      unsigned char 
+   788 ;; Registers used:
+   789 ;;		wreg, status,2, status,0, pclath, cstack
+   790 ;; Tracked objects:
+   791 ;;		On entry : 0/0
+   792 ;;		On exit  : 0/0
+   793 ;;		Unchanged: 0/0
+   794 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   795 ;;      Params:         0       0       0       0
+   796 ;;      Locals:         1       0       0       0
+   797 ;;      Temps:          0       0       0       0
+   798 ;;      Totals:         1       0       0       0
+   799 ;;Total ram usage:        1 bytes
+   800 ;; Hardware stack levels used: 1
+   801 ;; Hardware stack levels required when called: 1
+   802 ;; This function calls:
+   803 ;;		_READ_SWITCHES
+   804 ;; This function is called by:
+   805 ;;		_main
+   806 ;; This function uses a non-reentrant model
+   807 ;;
+   808                           
+   809     057E                     _GetKey:	
+   810                           ;psect for function _GetKey
+   811                           
+   812     057E                     l839:	
+   813                           ;incstack = 0
+   814                           ; Regs used in _GetKey: [wreg+status,2+status,0+pclath+cstack]
+   815                           
+   816                           
+   817                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 57:  char key = 'n';
+   818     057E  306E               	movlw	110
+   819     057F  00F3               	movwf	GetKey@key
+   820                           
+   821                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 59:  while(key=='n')
+   822     0580  2D83               	goto	l843
+   823     0581                     l841:
+   824                           
+   825                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 60:   key = READ_SWITCHES();
+   826     0581  265A               	fcall	_READ_SWITCHES
+   827     0582  00F3               	movwf	GetKey@key
+   828     0583                     l843:
+   829                           
+   830                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 59:  while(key=='n')
+   831     0583  306E               	movlw	110
+   832     0584  0673               	xorwf	GetKey@key,w
+   833     0585  1903               	btfsc	3,2
+   834     0586  2D88               	goto	u341
+   835     0587  2D89               	goto	u340
+   836     0588                     u341:
+   837     0588  2D81               	goto	l841
+   838     0589                     u340:
+   839     0589                     l845:
+   840                           
+   841                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 62:  return key;
+   842     0589  0873               	movf	GetKey@key,w
+   843     058A                     l100:
+   844     058A  0008               	return
+   845     058B                     __end_of_GetKey:
+   846                           
+   847                           	psect	text5
+   848     065A                     __ptext5:	
+   849 ;; *************** function _READ_SWITCHES *****************
+   850 ;; Defined at:
+   851 ;;		line 19 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing C
+      +ode/Code/Keypad.c"
+   852 ;; Parameters:    Size  Location     Type
+   853 ;;		None
+   854 ;; Auto vars:     Size  Location     Type
+   855 ;;		None
+   856 ;; Return value:  Size  Location     Type
+   857 ;;                  1    wreg      unsigned char 
+   858 ;; Registers used:
+   859 ;;		wreg
+   860 ;; Tracked objects:
+   861 ;;		On entry : 0/0
+   862 ;;		On exit  : 0/0
+   863 ;;		Unchanged: 0/0
+   864 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+   865 ;;      Params:         0       0       0       0
+   866 ;;      Locals:         0       0       0       0
+   867 ;;      Temps:          3       0       0       0
+   868 ;;      Totals:         3       0       0       0
+   869 ;;Total ram usage:        3 bytes
+   870 ;; Hardware stack levels used: 1
+   871 ;; This function calls:
+   872 ;;		Nothing
+   873 ;; This function is called by:
+   874 ;;		_GetKey
+   875 ;; This function uses a non-reentrant model
+   876 ;;
+   877                           
+   878     065A                     _READ_SWITCHES:	
+   879                           ;psect for function _READ_SWITCHES
+   880                           
+   881     065A                     l719:	
+   882                           ;incstack = 0
+   883                           ; Regs used in _READ_SWITCHES: [wreg]
+   884                           
+   885                           
+   886                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 21:  RB0 = 0; RB1 = 1; RB2 = 1; RB3 = 1;
+   887     065A  1283               	bcf	3,5	;RP0=0, select bank0
+   888     065B  1303               	bcf	3,6	;RP1=0, select bank0
+   889     065C  1006               	bcf	6,0	;volatile
+   890     065D  1486               	bsf	6,1	;volatile
+   891     065E  1506               	bsf	6,2	;volatile
+   892     065F  1586               	bsf	6,3	;volatile
+   893                           
+   894                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 23:  if (RB4 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB4==0); return '7'; }
+   895     0660  1A06               	btfsc	6,4	;volatile
+   896     0661  2E63               	goto	u11
+   897     0662  2E64               	goto	u10
+   898     0663                     u11:
+   899     0663  2E79               	goto	l30
+   900     0664                     u10:
+   901     0664                     l721:
+   902     0664  3002               	movlw	2
+   903     0665  00F2               	movwf	??_READ_SWITCHES+2
+   904     0666  3045               	movlw	69
+   905     0667  00F1               	movwf	??_READ_SWITCHES+1
+   906     0668  30A9               	movlw	169
+   907     0669  00F0               	movwf	??_READ_SWITCHES
+   908     066A                     u427:
+   909     066A  0BF0               	decfsz	??_READ_SWITCHES,f
+   910     066B  2E6A               	goto	u427
+   911     066C  0BF1               	decfsz	??_READ_SWITCHES+1,f
+   912     066D  2E6A               	goto	u427
+   913     066E  0BF2               	decfsz	??_READ_SWITCHES+2,f
+   914     066F  2E6A               	goto	u427
+   915     0670  2E71               	nop2
+   916     0671                     l31:
+   917     0671  1283               	bcf	3,5	;RP0=0, select bank0
+   918     0672  1303               	bcf	3,6	;RP1=0, select bank0
+   919     0673  1E06               	btfss	6,4	;volatile
+   920     0674  2E76               	goto	u21
+   921     0675  2E77               	goto	u20
+   922     0676                     u21:
+   923     0676  2E71               	goto	l31
+   924     0677                     u20:
+   925     0677                     l723:
+   926     0677  3037               	movlw	55
+   927     0678  2FFD               	goto	l34
+   928     0679                     l30:
+   929                           
+   930                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 24:  if (RB5 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB5==0); return '8'; }
+   931     0679  1A86               	btfsc	6,5	;volatile
+   932     067A  2E7C               	goto	u31
+   933     067B  2E7D               	goto	u30
+   934     067C                     u31:
+   935     067C  2E92               	goto	l35
+   936     067D                     u30:
+   937     067D                     l727:
+   938     067D  3002               	movlw	2
+   939     067E  00F2               	movwf	??_READ_SWITCHES+2
+   940     067F  3045               	movlw	69
+   941     0680  00F1               	movwf	??_READ_SWITCHES+1
+   942     0681  30A9               	movlw	169
+   943     0682  00F0               	movwf	??_READ_SWITCHES
+   944     0683                     u437:
+   945     0683  0BF0               	decfsz	??_READ_SWITCHES,f
+   946     0684  2E83               	goto	u437
+   947     0685  0BF1               	decfsz	??_READ_SWITCHES+1,f
+   948     0686  2E83               	goto	u437
+   949     0687  0BF2               	decfsz	??_READ_SWITCHES+2,f
+   950     0688  2E83               	goto	u437
+   951     0689  2E8A               	nop2
+   952     068A                     l36:
+   953     068A  1283               	bcf	3,5	;RP0=0, select bank0
+   954     068B  1303               	bcf	3,6	;RP1=0, select bank0
+   955     068C  1E86               	btfss	6,5	;volatile
+   956     068D  2E8F               	goto	u41
+   957     068E  2E90               	goto	u40
+   958     068F                     u41:
+   959     068F  2E8A               	goto	l36
+   960     0690                     u40:
+   961     0690                     l729:
+   962     0690  3038               	movlw	56
+   963     0691  2FFD               	goto	l34
+   964     0692                     l35:
+   965                           
+   966                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 25:  if (RB6 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB6==0); return '9'; }
+   967     0692  1B06               	btfsc	6,6	;volatile
+   968     0693  2E95               	goto	u51
+   969     0694  2E96               	goto	u50
+   970     0695                     u51:
+   971     0695  2EAB               	goto	l39
+   972     0696                     u50:
+   973     0696                     l733:
+   974     0696  3002               	movlw	2
+   975     0697  00F2               	movwf	??_READ_SWITCHES+2
+   976     0698  3045               	movlw	69
+   977     0699  00F1               	movwf	??_READ_SWITCHES+1
+   978     069A  30A9               	movlw	169
+   979     069B  00F0               	movwf	??_READ_SWITCHES
+   980     069C                     u447:
+   981     069C  0BF0               	decfsz	??_READ_SWITCHES,f
+   982     069D  2E9C               	goto	u447
+   983     069E  0BF1               	decfsz	??_READ_SWITCHES+1,f
+   984     069F  2E9C               	goto	u447
+   985     06A0  0BF2               	decfsz	??_READ_SWITCHES+2,f
+   986     06A1  2E9C               	goto	u447
+   987     06A2  2EA3               	nop2
+   988     06A3                     l40:
+   989     06A3  1283               	bcf	3,5	;RP0=0, select bank0
+   990     06A4  1303               	bcf	3,6	;RP1=0, select bank0
+   991     06A5  1F06               	btfss	6,6	;volatile
+   992     06A6  2EA8               	goto	u61
+   993     06A7  2EA9               	goto	u60
+   994     06A8                     u61:
+   995     06A8  2EA3               	goto	l40
+   996     06A9                     u60:
+   997     06A9                     l735:
+   998     06A9  3039               	movlw	57
+   999     06AA  2FFD               	goto	l34
+  1000     06AB                     l39:
+  1001                           
+  1002                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 26:  if (RB7 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB7==0); return '/'; }
+  1003     06AB  1B86               	btfsc	6,7	;volatile
+  1004     06AC  2EAE               	goto	u71
+  1005     06AD  2EAF               	goto	u70
+  1006     06AE                     u71:
+  1007     06AE  2EC4               	goto	l43
+  1008     06AF                     u70:
+  1009     06AF                     l739:
+  1010     06AF  3002               	movlw	2
+  1011     06B0  00F2               	movwf	??_READ_SWITCHES+2
+  1012     06B1  3045               	movlw	69
+  1013     06B2  00F1               	movwf	??_READ_SWITCHES+1
+  1014     06B3  30A9               	movlw	169
+  1015     06B4  00F0               	movwf	??_READ_SWITCHES
+  1016     06B5                     u457:
+  1017     06B5  0BF0               	decfsz	??_READ_SWITCHES,f
+  1018     06B6  2EB5               	goto	u457
+  1019     06B7  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1020     06B8  2EB5               	goto	u457
+  1021     06B9  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1022     06BA  2EB5               	goto	u457
+  1023     06BB  2EBC               	nop2
+  1024     06BC                     l44:
+  1025     06BC  1283               	bcf	3,5	;RP0=0, select bank0
+  1026     06BD  1303               	bcf	3,6	;RP1=0, select bank0
+  1027     06BE  1F86               	btfss	6,7	;volatile
+  1028     06BF  2EC1               	goto	u81
+  1029     06C0  2EC2               	goto	u80
+  1030     06C1                     u81:
+  1031     06C1  2EBC               	goto	l44
+  1032     06C2                     u80:
+  1033     06C2                     l741:
+  1034     06C2  302F               	movlw	47
+  1035     06C3  2FFD               	goto	l34
+  1036     06C4                     l43:
+  1037                           
+  1038                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 28:  RB0 = 1; RB1 = 0; RB2 = 1; RB3 = 1;
+  1039     06C4  1406               	bsf	6,0	;volatile
+  1040     06C5  1086               	bcf	6,1	;volatile
+  1041     06C6  1506               	bsf	6,2	;volatile
+  1042     06C7  1586               	bsf	6,3	;volatile
+  1043                           
+  1044                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 30:  if (RB4 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB4==0); return '4'; }
+  1045     06C8  1A06               	btfsc	6,4	;volatile
+  1046     06C9  2ECB               	goto	u91
+  1047     06CA  2ECC               	goto	u90
+  1048     06CB                     u91:
+  1049     06CB  2EE1               	goto	l47
+  1050     06CC                     u90:
+  1051     06CC                     l745:
+  1052     06CC  3002               	movlw	2
+  1053     06CD  00F2               	movwf	??_READ_SWITCHES+2
+  1054     06CE  3045               	movlw	69
+  1055     06CF  00F1               	movwf	??_READ_SWITCHES+1
+  1056     06D0  30A9               	movlw	169
+  1057     06D1  00F0               	movwf	??_READ_SWITCHES
+  1058     06D2                     u467:
+  1059     06D2  0BF0               	decfsz	??_READ_SWITCHES,f
+  1060     06D3  2ED2               	goto	u467
+  1061     06D4  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1062     06D5  2ED2               	goto	u467
+  1063     06D6  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1064     06D7  2ED2               	goto	u467
+  1065     06D8  2ED9               	nop2
+  1066     06D9                     l48:
+  1067     06D9  1283               	bcf	3,5	;RP0=0, select bank0
+  1068     06DA  1303               	bcf	3,6	;RP1=0, select bank0
+  1069     06DB  1E06               	btfss	6,4	;volatile
+  1070     06DC  2EDE               	goto	u101
+  1071     06DD  2EDF               	goto	u100
+  1072     06DE                     u101:
+  1073     06DE  2ED9               	goto	l48
+  1074     06DF                     u100:
+  1075     06DF                     l747:
+  1076     06DF  3034               	movlw	52
+  1077     06E0  2FFD               	goto	l34
+  1078     06E1                     l47:
+  1079                           
+  1080                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 31:  if (RB5 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB5==0); return '5'; }
+  1081     06E1  1A86               	btfsc	6,5	;volatile
+  1082     06E2  2EE4               	goto	u111
+  1083     06E3  2EE5               	goto	u110
+  1084     06E4                     u111:
+  1085     06E4  2EFA               	goto	l51
+  1086     06E5                     u110:
+  1087     06E5                     l751:
+  1088     06E5  3002               	movlw	2
+  1089     06E6  00F2               	movwf	??_READ_SWITCHES+2
+  1090     06E7  3045               	movlw	69
+  1091     06E8  00F1               	movwf	??_READ_SWITCHES+1
+  1092     06E9  30A9               	movlw	169
+  1093     06EA  00F0               	movwf	??_READ_SWITCHES
+  1094     06EB                     u477:
+  1095     06EB  0BF0               	decfsz	??_READ_SWITCHES,f
+  1096     06EC  2EEB               	goto	u477
+  1097     06ED  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1098     06EE  2EEB               	goto	u477
+  1099     06EF  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1100     06F0  2EEB               	goto	u477
+  1101     06F1  2EF2               	nop2
+  1102     06F2                     l52:
+  1103     06F2  1283               	bcf	3,5	;RP0=0, select bank0
+  1104     06F3  1303               	bcf	3,6	;RP1=0, select bank0
+  1105     06F4  1E86               	btfss	6,5	;volatile
+  1106     06F5  2EF7               	goto	u121
+  1107     06F6  2EF8               	goto	u120
+  1108     06F7                     u121:
+  1109     06F7  2EF2               	goto	l52
+  1110     06F8                     u120:
+  1111     06F8                     l753:
+  1112     06F8  3035               	movlw	53
+  1113     06F9  2FFD               	goto	l34
+  1114     06FA                     l51:
+  1115                           
+  1116                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 32:  if (RB6 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB6==0); return '6'; }
+  1117     06FA  1B06               	btfsc	6,6	;volatile
+  1118     06FB  2EFD               	goto	u131
+  1119     06FC  2EFE               	goto	u130
+  1120     06FD                     u131:
+  1121     06FD  2F13               	goto	l55
+  1122     06FE                     u130:
+  1123     06FE                     l757:
+  1124     06FE  3002               	movlw	2
+  1125     06FF  00F2               	movwf	??_READ_SWITCHES+2
+  1126     0700  3045               	movlw	69
+  1127     0701  00F1               	movwf	??_READ_SWITCHES+1
+  1128     0702  30A9               	movlw	169
+  1129     0703  00F0               	movwf	??_READ_SWITCHES
+  1130     0704                     u487:
+  1131     0704  0BF0               	decfsz	??_READ_SWITCHES,f
+  1132     0705  2F04               	goto	u487
+  1133     0706  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1134     0707  2F04               	goto	u487
+  1135     0708  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1136     0709  2F04               	goto	u487
+  1137     070A  2F0B               	nop2
+  1138     070B                     l56:
+  1139     070B  1283               	bcf	3,5	;RP0=0, select bank0
+  1140     070C  1303               	bcf	3,6	;RP1=0, select bank0
+  1141     070D  1F06               	btfss	6,6	;volatile
+  1142     070E  2F10               	goto	u141
+  1143     070F  2F11               	goto	u140
+  1144     0710                     u141:
+  1145     0710  2F0B               	goto	l56
+  1146     0711                     u140:
+  1147     0711                     l759:
+  1148     0711  3036               	movlw	54
+  1149     0712  2FFD               	goto	l34
+  1150     0713                     l55:
+  1151                           
+  1152                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 33:  if (RB7 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB7==0); return 'x'; }
+  1153     0713  1B86               	btfsc	6,7	;volatile
+  1154     0714  2F16               	goto	u151
+  1155     0715  2F17               	goto	u150
+  1156     0716                     u151:
+  1157     0716  2F2C               	goto	l59
+  1158     0717                     u150:
+  1159     0717                     l763:
+  1160     0717  3002               	movlw	2
+  1161     0718  00F2               	movwf	??_READ_SWITCHES+2
+  1162     0719  3045               	movlw	69
+  1163     071A  00F1               	movwf	??_READ_SWITCHES+1
+  1164     071B  30A9               	movlw	169
+  1165     071C  00F0               	movwf	??_READ_SWITCHES
+  1166     071D                     u497:
+  1167     071D  0BF0               	decfsz	??_READ_SWITCHES,f
+  1168     071E  2F1D               	goto	u497
+  1169     071F  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1170     0720  2F1D               	goto	u497
+  1171     0721  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1172     0722  2F1D               	goto	u497
+  1173     0723  2F24               	nop2
+  1174     0724                     l60:
+  1175     0724  1283               	bcf	3,5	;RP0=0, select bank0
+  1176     0725  1303               	bcf	3,6	;RP1=0, select bank0
+  1177     0726  1F86               	btfss	6,7	;volatile
+  1178     0727  2F29               	goto	u161
+  1179     0728  2F2A               	goto	u160
+  1180     0729                     u161:
+  1181     0729  2F24               	goto	l60
+  1182     072A                     u160:
+  1183     072A                     l765:
+  1184     072A  3078               	movlw	120
+  1185     072B  2FFD               	goto	l34
+  1186     072C                     l59:
+  1187                           
+  1188                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 35:  RB0 = 1; RB1 = 1; RB2 = 0; RB3 = 1;
+  1189     072C  1406               	bsf	6,0	;volatile
+  1190     072D  1486               	bsf	6,1	;volatile
+  1191     072E  1106               	bcf	6,2	;volatile
+  1192     072F  1586               	bsf	6,3	;volatile
+  1193                           
+  1194                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 37:  if (RB4 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB4==0); return '1'; }
+  1195     0730  1A06               	btfsc	6,4	;volatile
+  1196     0731  2F33               	goto	u171
+  1197     0732  2F34               	goto	u170
+  1198     0733                     u171:
+  1199     0733  2F49               	goto	l63
+  1200     0734                     u170:
+  1201     0734                     l769:
+  1202     0734  3002               	movlw	2
+  1203     0735  00F2               	movwf	??_READ_SWITCHES+2
+  1204     0736  3045               	movlw	69
+  1205     0737  00F1               	movwf	??_READ_SWITCHES+1
+  1206     0738  30A9               	movlw	169
+  1207     0739  00F0               	movwf	??_READ_SWITCHES
+  1208     073A                     u507:
+  1209     073A  0BF0               	decfsz	??_READ_SWITCHES,f
+  1210     073B  2F3A               	goto	u507
+  1211     073C  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1212     073D  2F3A               	goto	u507
+  1213     073E  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1214     073F  2F3A               	goto	u507
+  1215     0740  2F41               	nop2
+  1216     0741                     l64:
+  1217     0741  1283               	bcf	3,5	;RP0=0, select bank0
+  1218     0742  1303               	bcf	3,6	;RP1=0, select bank0
+  1219     0743  1E06               	btfss	6,4	;volatile
+  1220     0744  2F46               	goto	u181
+  1221     0745  2F47               	goto	u180
+  1222     0746                     u181:
+  1223     0746  2F41               	goto	l64
+  1224     0747                     u180:
+  1225     0747                     l771:
+  1226     0747  3031               	movlw	49
+  1227     0748  2FFD               	goto	l34
+  1228     0749                     l63:
+  1229                           
+  1230                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 38:  if (RB5 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB5==0); return '2'; }
+  1231     0749  1A86               	btfsc	6,5	;volatile
+  1232     074A  2F4C               	goto	u191
+  1233     074B  2F4D               	goto	u190
+  1234     074C                     u191:
+  1235     074C  2F62               	goto	l67
+  1236     074D                     u190:
+  1237     074D                     l775:
+  1238     074D  3002               	movlw	2
+  1239     074E  00F2               	movwf	??_READ_SWITCHES+2
+  1240     074F  3045               	movlw	69
+  1241     0750  00F1               	movwf	??_READ_SWITCHES+1
+  1242     0751  30A9               	movlw	169
+  1243     0752  00F0               	movwf	??_READ_SWITCHES
+  1244     0753                     u517:
+  1245     0753  0BF0               	decfsz	??_READ_SWITCHES,f
+  1246     0754  2F53               	goto	u517
+  1247     0755  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1248     0756  2F53               	goto	u517
+  1249     0757  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1250     0758  2F53               	goto	u517
+  1251     0759  2F5A               	nop2
+  1252     075A                     l68:
+  1253     075A  1283               	bcf	3,5	;RP0=0, select bank0
+  1254     075B  1303               	bcf	3,6	;RP1=0, select bank0
+  1255     075C  1E86               	btfss	6,5	;volatile
+  1256     075D  2F5F               	goto	u201
+  1257     075E  2F60               	goto	u200
+  1258     075F                     u201:
+  1259     075F  2F5A               	goto	l68
+  1260     0760                     u200:
+  1261     0760                     l777:
+  1262     0760  3032               	movlw	50
+  1263     0761  2FFD               	goto	l34
+  1264     0762                     l67:
+  1265                           
+  1266                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 39:  if (RB6 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB6==0); return '3'; }
+  1267     0762  1B06               	btfsc	6,6	;volatile
+  1268     0763  2F65               	goto	u211
+  1269     0764  2F66               	goto	u210
+  1270     0765                     u211:
+  1271     0765  2F7B               	goto	l71
+  1272     0766                     u210:
+  1273     0766                     l781:
+  1274     0766  3002               	movlw	2
+  1275     0767  00F2               	movwf	??_READ_SWITCHES+2
+  1276     0768  3045               	movlw	69
+  1277     0769  00F1               	movwf	??_READ_SWITCHES+1
+  1278     076A  30A9               	movlw	169
+  1279     076B  00F0               	movwf	??_READ_SWITCHES
+  1280     076C                     u527:
+  1281     076C  0BF0               	decfsz	??_READ_SWITCHES,f
+  1282     076D  2F6C               	goto	u527
+  1283     076E  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1284     076F  2F6C               	goto	u527
+  1285     0770  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1286     0771  2F6C               	goto	u527
+  1287     0772  2F73               	nop2
+  1288     0773                     l72:
+  1289     0773  1283               	bcf	3,5	;RP0=0, select bank0
+  1290     0774  1303               	bcf	3,6	;RP1=0, select bank0
+  1291     0775  1F06               	btfss	6,6	;volatile
+  1292     0776  2F78               	goto	u221
+  1293     0777  2F79               	goto	u220
+  1294     0778                     u221:
+  1295     0778  2F73               	goto	l72
+  1296     0779                     u220:
+  1297     0779                     l783:
+  1298     0779  3033               	movlw	51
+  1299     077A  2FFD               	goto	l34
+  1300     077B                     l71:
+  1301                           
+  1302                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 40:  if (RB7 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB7==0); return '-'; }
+  1303     077B  1B86               	btfsc	6,7	;volatile
+  1304     077C  2F7E               	goto	u231
+  1305     077D  2F7F               	goto	u230
+  1306     077E                     u231:
+  1307     077E  2F94               	goto	l75
+  1308     077F                     u230:
+  1309     077F                     l787:
+  1310     077F  3002               	movlw	2
+  1311     0780  00F2               	movwf	??_READ_SWITCHES+2
+  1312     0781  3045               	movlw	69
+  1313     0782  00F1               	movwf	??_READ_SWITCHES+1
+  1314     0783  30A9               	movlw	169
+  1315     0784  00F0               	movwf	??_READ_SWITCHES
+  1316     0785                     u537:
+  1317     0785  0BF0               	decfsz	??_READ_SWITCHES,f
+  1318     0786  2F85               	goto	u537
+  1319     0787  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1320     0788  2F85               	goto	u537
+  1321     0789  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1322     078A  2F85               	goto	u537
+  1323     078B  2F8C               	nop2
+  1324     078C                     l76:
+  1325     078C  1283               	bcf	3,5	;RP0=0, select bank0
+  1326     078D  1303               	bcf	3,6	;RP1=0, select bank0
+  1327     078E  1F86               	btfss	6,7	;volatile
+  1328     078F  2F91               	goto	u241
+  1329     0790  2F92               	goto	u240
+  1330     0791                     u241:
+  1331     0791  2F8C               	goto	l76
+  1332     0792                     u240:
+  1333     0792                     l789:
+  1334     0792  302D               	movlw	45
+  1335     0793  2FFD               	goto	l34
+  1336     0794                     l75:
+  1337                           
+  1338                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 42:  RB0 = 1; RB1 = 1; RB2 = 1; RB3 = 0;
+  1339     0794  1406               	bsf	6,0	;volatile
+  1340     0795  1486               	bsf	6,1	;volatile
+  1341     0796  1506               	bsf	6,2	;volatile
+  1342     0797  1186               	bcf	6,3	;volatile
+  1343                           
+  1344                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 44:  if (RB4 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB4==0); return 'C'; }
+  1345     0798  1A06               	btfsc	6,4	;volatile
+  1346     0799  2F9B               	goto	u251
+  1347     079A  2F9C               	goto	u250
+  1348     079B                     u251:
+  1349     079B  2FB1               	goto	l79
+  1350     079C                     u250:
+  1351     079C                     l793:
+  1352     079C  3002               	movlw	2
+  1353     079D  00F2               	movwf	??_READ_SWITCHES+2
+  1354     079E  3045               	movlw	69
+  1355     079F  00F1               	movwf	??_READ_SWITCHES+1
+  1356     07A0  30A9               	movlw	169
+  1357     07A1  00F0               	movwf	??_READ_SWITCHES
+  1358     07A2                     u547:
+  1359     07A2  0BF0               	decfsz	??_READ_SWITCHES,f
+  1360     07A3  2FA2               	goto	u547
+  1361     07A4  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1362     07A5  2FA2               	goto	u547
+  1363     07A6  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1364     07A7  2FA2               	goto	u547
+  1365     07A8  2FA9               	nop2
+  1366     07A9                     l80:
+  1367     07A9  1283               	bcf	3,5	;RP0=0, select bank0
+  1368     07AA  1303               	bcf	3,6	;RP1=0, select bank0
+  1369     07AB  1E06               	btfss	6,4	;volatile
+  1370     07AC  2FAE               	goto	u261
+  1371     07AD  2FAF               	goto	u260
+  1372     07AE                     u261:
+  1373     07AE  2FA9               	goto	l80
+  1374     07AF                     u260:
+  1375     07AF                     l795:
+  1376     07AF  3043               	movlw	67
+  1377     07B0  2FFD               	goto	l34
+  1378     07B1                     l79:
+  1379                           
+  1380                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 45:  if (RB5 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB5==0); return '0'; }
+  1381     07B1  1A86               	btfsc	6,5	;volatile
+  1382     07B2  2FB4               	goto	u271
+  1383     07B3  2FB5               	goto	u270
+  1384     07B4                     u271:
+  1385     07B4  2FCA               	goto	l83
+  1386     07B5                     u270:
+  1387     07B5                     l799:
+  1388     07B5  3002               	movlw	2
+  1389     07B6  00F2               	movwf	??_READ_SWITCHES+2
+  1390     07B7  3045               	movlw	69
+  1391     07B8  00F1               	movwf	??_READ_SWITCHES+1
+  1392     07B9  30A9               	movlw	169
+  1393     07BA  00F0               	movwf	??_READ_SWITCHES
+  1394     07BB                     u557:
+  1395     07BB  0BF0               	decfsz	??_READ_SWITCHES,f
+  1396     07BC  2FBB               	goto	u557
+  1397     07BD  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1398     07BE  2FBB               	goto	u557
+  1399     07BF  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1400     07C0  2FBB               	goto	u557
+  1401     07C1  2FC2               	nop2
+  1402     07C2                     l84:
+  1403     07C2  1283               	bcf	3,5	;RP0=0, select bank0
+  1404     07C3  1303               	bcf	3,6	;RP1=0, select bank0
+  1405     07C4  1E86               	btfss	6,5	;volatile
+  1406     07C5  2FC7               	goto	u281
+  1407     07C6  2FC8               	goto	u280
+  1408     07C7                     u281:
+  1409     07C7  2FC2               	goto	l84
+  1410     07C8                     u280:
+  1411     07C8                     l801:
+  1412     07C8  3030               	movlw	48
+  1413     07C9  2FFD               	goto	l34
+  1414     07CA                     l83:
+  1415                           
+  1416                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 46:  if (RB6 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB6==0); return '='; }
+  1417     07CA  1B06               	btfsc	6,6	;volatile
+  1418     07CB  2FCD               	goto	u291
+  1419     07CC  2FCE               	goto	u290
+  1420     07CD                     u291:
+  1421     07CD  2FE3               	goto	l87
+  1422     07CE                     u290:
+  1423     07CE                     l805:
+  1424     07CE  3002               	movlw	2
+  1425     07CF  00F2               	movwf	??_READ_SWITCHES+2
+  1426     07D0  3045               	movlw	69
+  1427     07D1  00F1               	movwf	??_READ_SWITCHES+1
+  1428     07D2  30A9               	movlw	169
+  1429     07D3  00F0               	movwf	??_READ_SWITCHES
+  1430     07D4                     u567:
+  1431     07D4  0BF0               	decfsz	??_READ_SWITCHES,f
+  1432     07D5  2FD4               	goto	u567
+  1433     07D6  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1434     07D7  2FD4               	goto	u567
+  1435     07D8  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1436     07D9  2FD4               	goto	u567
+  1437     07DA  2FDB               	nop2
+  1438     07DB                     l88:
+  1439     07DB  1283               	bcf	3,5	;RP0=0, select bank0
+  1440     07DC  1303               	bcf	3,6	;RP1=0, select bank0
+  1441     07DD  1F06               	btfss	6,6	;volatile
+  1442     07DE  2FE0               	goto	u301
+  1443     07DF  2FE1               	goto	u300
+  1444     07E0                     u301:
+  1445     07E0  2FDB               	goto	l88
+  1446     07E1                     u300:
+  1447     07E1                     l807:
+  1448     07E1  303D               	movlw	61
+  1449     07E2  2FFD               	goto	l34
+  1450     07E3                     l87:
+  1451                           
+  1452                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 47:  if (RB7 == 0) { _delay((unsigned long)((250)*(400000
+      +                          0/4000.0))); while (RB7==0); return '+'; }
+  1453     07E3  1B86               	btfsc	6,7	;volatile
+  1454     07E4  2FE6               	goto	u311
+  1455     07E5  2FE7               	goto	u310
+  1456     07E6                     u311:
+  1457     07E6  2FFC               	goto	l817
+  1458     07E7                     u310:
+  1459     07E7                     l811:
+  1460     07E7  3002               	movlw	2
+  1461     07E8  00F2               	movwf	??_READ_SWITCHES+2
+  1462     07E9  3045               	movlw	69
+  1463     07EA  00F1               	movwf	??_READ_SWITCHES+1
+  1464     07EB  30A9               	movlw	169
+  1465     07EC  00F0               	movwf	??_READ_SWITCHES
+  1466     07ED                     u577:
+  1467     07ED  0BF0               	decfsz	??_READ_SWITCHES,f
+  1468     07EE  2FED               	goto	u577
+  1469     07EF  0BF1               	decfsz	??_READ_SWITCHES+1,f
+  1470     07F0  2FED               	goto	u577
+  1471     07F1  0BF2               	decfsz	??_READ_SWITCHES+2,f
+  1472     07F2  2FED               	goto	u577
+  1473     07F3  2FF4               	nop2
+  1474     07F4                     l92:
+  1475     07F4  1283               	bcf	3,5	;RP0=0, select bank0
+  1476     07F5  1303               	bcf	3,6	;RP1=0, select bank0
+  1477     07F6  1F86               	btfss	6,7	;volatile
+  1478     07F7  2FF9               	goto	u321
+  1479     07F8  2FFA               	goto	u320
+  1480     07F9                     u321:
+  1481     07F9  2FF4               	goto	l92
+  1482     07FA                     u320:
+  1483     07FA                     l813:
+  1484     07FA  302B               	movlw	43
+  1485     07FB  2FFD               	goto	l34
+  1486     07FC                     l817:
+  1487                           
+  1488                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/Keypad.c: 49:  return 'n';
+  1489     07FC  306E               	movlw	110
+  1490     07FD                     l34:
+  1491     07FD  0008               	return
+  1492     07FE                     __end_of_READ_SWITCHES:
+  1493                           
+  1494                           	psect	text6
+  1495     0566                     __ptext6:	
+  1496 ;; *************** function _ClearLCDScreen *****************
+  1497 ;; Defined at:
+  1498 ;;		line 98 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing C
+      +ode/Code/LCD.c"
+  1499 ;; Parameters:    Size  Location     Type
+  1500 ;;		None
+  1501 ;; Auto vars:     Size  Location     Type
+  1502 ;;		None
+  1503 ;; Return value:  Size  Location     Type
+  1504 ;;                  1    wreg      void 
+  1505 ;; Registers used:
+  1506 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1507 ;; Tracked objects:
+  1508 ;;		On entry : 0/0
+  1509 ;;		On exit  : 0/0
+  1510 ;;		Unchanged: 0/0
+  1511 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1512 ;;      Params:         0       0       0       0
+  1513 ;;      Locals:         0       0       0       0
+  1514 ;;      Temps:          2       0       0       0
+  1515 ;;      Totals:         2       0       0       0
+  1516 ;;Total ram usage:        2 bytes
+  1517 ;; Hardware stack levels used: 1
+  1518 ;; Hardware stack levels required when called: 2
+  1519 ;; This function calls:
+  1520 ;;		_WriteCommandToLCD
+  1521 ;; This function is called by:
+  1522 ;;		_main
+  1523 ;; This function uses a non-reentrant model
+  1524 ;;
+  1525                           
+  1526     0566                     _ClearLCDScreen:	
+  1527                           ;psect for function _ClearLCDScreen
+  1528                           
+  1529     0566                     l901:	
+  1530                           ;incstack = 0
+  1531                           ; Regs used in _ClearLCDScreen: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1532                           
+  1533                           
+  1534                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 100:  WriteCommandToLCD(0x01);
+  1535     0566  3001               	movlw	1
+  1536     0567  25A9               	fcall	_WriteCommandToLCD
+  1537     0568                     l903:
+  1538                           
+  1539                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 101:  _delay((unsigned long)((2)*(4000000/4000.0)));
+  1540     0568  3003               	movlw	3
+  1541     0569  00F4               	movwf	??_ClearLCDScreen+1
+  1542     056A  3097               	movlw	151
+  1543     056B  00F3               	movwf	??_ClearLCDScreen
+  1544     056C                     u587:
+  1545     056C  0BF3               	decfsz	??_ClearLCDScreen,f
+  1546     056D  2D6C               	goto	u587
+  1547     056E  0BF4               	decfsz	??_ClearLCDScreen+1,f
+  1548     056F  2D6C               	goto	u587
+  1549     0570  2D71               	nop2
+  1550     0571                     l149:
+  1551     0571  0008               	return
+  1552     0572                     __end_of_ClearLCDScreen:
+  1553                           
+  1554                           	psect	text7
+  1555     05A9                     __ptext7:	
+  1556 ;; *************** function _WriteCommandToLCD *****************
+  1557 ;; Defined at:
+  1558 ;;		line 13 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing C
+      +ode/Code/LCD.c"
+  1559 ;; Parameters:    Size  Location     Type
+  1560 ;;  Command         1    wreg     unsigned char 
+  1561 ;; Auto vars:     Size  Location     Type
+  1562 ;;  Command         1    2[COMMON] unsigned char 
+  1563 ;; Return value:  Size  Location     Type
+  1564 ;;                  1    wreg      void 
+  1565 ;; Registers used:
+  1566 ;;		wreg, status,2, status,0, btemp+1, pclath, cstack
+  1567 ;; Tracked objects:
+  1568 ;;		On entry : 0/0
+  1569 ;;		On exit  : 0/0
+  1570 ;;		Unchanged: 0/0
+  1571 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1572 ;;      Params:         0       0       0       0
+  1573 ;;      Locals:         1       0       0       0
+  1574 ;;      Temps:          1       0       0       0
+  1575 ;;      Totals:         2       0       0       0
+  1576 ;;Total ram usage:        2 bytes
+  1577 ;; Hardware stack levels used: 1
+  1578 ;; Hardware stack levels required when called: 1
+  1579 ;; This function calls:
+  1580 ;;		_ToggleEpinOfLCD
+  1581 ;; This function is called by:
+  1582 ;;		_InitLCD
+  1583 ;;		_ClearLCDScreen
+  1584 ;; This function uses a non-reentrant model
+  1585 ;;
+  1586                           
+  1587     05A9                     _WriteCommandToLCD:	
+  1588                           ;psect for function _WriteCommandToLCD
+  1589                           
+  1590                           
+  1591                           ;incstack = 0
+  1592                           ; Regs used in _WriteCommandToLCD: [wreg+status,2+status,0+btemp+1+pclath+cstack]
+  1593                           ;WriteCommandToLCD@Command stored from wreg
+  1594     05A9  00F2               	movwf	WriteCommandToLCD@Command
+  1595     05AA                     l821:
+  1596                           
+  1597                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 13: void WriteCommandToLCD(unsigned char Command);C:/Users/f
+      +                          aizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing 
+      +                          Code/Code/LCD.c: 14: {;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Co
+      +                          de/PIC16F628A Keypad Interfacing Code/Code/LCD.c: 15:  RA6 = 0;
+  1598     05AA  1283               	bcf	3,5	;RP0=0, select bank0
+  1599     05AB  1303               	bcf	3,6	;RP1=0, select bank0
+  1600     05AC  1305               	bcf	5,6	;volatile
+  1601     05AD                     l823:
+  1602                           
+  1603                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 17:  PORTA &= 0xF0;
+  1604     05AD  30F0               	movlw	240
+  1605     05AE  00FF               	movwf	btemp+1
+  1606     05AF  087F               	movf	btemp+1,w
+  1607     05B0  0585               	andwf	5,f	;volatile
+  1608                           
+  1609                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 18:  PORTA |= ((Command&0xF0)>>4);
+  1610     05B1  0872               	movf	WriteCommandToLCD@Command,w
+  1611     05B2  00F1               	movwf	??_WriteCommandToLCD
+  1612     05B3  3004               	movlw	4
+  1613     05B4                     u335:
+  1614     05B4  1003               	clrc
+  1615     05B5  0CF1               	rrf	??_WriteCommandToLCD,f
+  1616     05B6  3EFF               	addlw	-1
+  1617     05B7  1D03               	skipz
+  1618     05B8  2DB4               	goto	u335
+  1619     05B9  0871               	movf	??_WriteCommandToLCD,w
+  1620     05BA  390F               	andlw	15
+  1621     05BB  00FF               	movwf	btemp+1
+  1622     05BC  087F               	movf	btemp+1,w
+  1623     05BD  0485               	iorwf	5,f	;volatile
+  1624     05BE                     l825:
+  1625                           
+  1626                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 19:  ToggleEpinOfLCD();
+  1627     05BE  2598               	fcall	_ToggleEpinOfLCD
+  1628     05BF                     l827:
+  1629                           
+  1630                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 21:  PORTA &= 0xF0;
+  1631     05BF  30F0               	movlw	240
+  1632     05C0  00FF               	movwf	btemp+1
+  1633     05C1  087F               	movf	btemp+1,w
+  1634     05C2  1283               	bcf	3,5	;RP0=0, select bank0
+  1635     05C3  1303               	bcf	3,6	;RP1=0, select bank0
+  1636     05C4  0585               	andwf	5,f	;volatile
+  1637     05C5                     l829:
+  1638                           
+  1639                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 22:  PORTA |= (Command&0x0F);
+  1640     05C5  0872               	movf	WriteCommandToLCD@Command,w
+  1641     05C6  390F               	andlw	15
+  1642     05C7  00FF               	movwf	btemp+1
+  1643     05C8  087F               	movf	btemp+1,w
+  1644     05C9  0485               	iorwf	5,f	;volatile
+  1645     05CA                     l831:
+  1646                           
+  1647                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 23:  ToggleEpinOfLCD();
+  1648     05CA  2598               	fcall	_ToggleEpinOfLCD
+  1649     05CB                     l134:
+  1650     05CB  0008               	return
+  1651     05CC                     __end_of_WriteCommandToLCD:
+  1652                           
+  1653                           	psect	text8
+  1654     0598                     __ptext8:	
+  1655 ;; *************** function _ToggleEpinOfLCD *****************
+  1656 ;; Defined at:
+  1657 ;;		line 4 in file "C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing Co
+      +de/Code/LCD.c"
+  1658 ;; Parameters:    Size  Location     Type
+  1659 ;;		None
+  1660 ;; Auto vars:     Size  Location     Type
+  1661 ;;		None
+  1662 ;; Return value:  Size  Location     Type
+  1663 ;;                  1    wreg      void 
+  1664 ;; Registers used:
+  1665 ;;		wreg
+  1666 ;; Tracked objects:
+  1667 ;;		On entry : 0/0
+  1668 ;;		On exit  : 0/0
+  1669 ;;		Unchanged: 0/0
+  1670 ;; Data sizes:     COMMON   BANK0   BANK1   BANK2
+  1671 ;;      Params:         0       0       0       0
+  1672 ;;      Locals:         0       0       0       0
+  1673 ;;      Temps:          1       0       0       0
+  1674 ;;      Totals:         1       0       0       0
+  1675 ;;Total ram usage:        1 bytes
+  1676 ;; Hardware stack levels used: 1
+  1677 ;; This function calls:
+  1678 ;;		Nothing
+  1679 ;; This function is called by:
+  1680 ;;		_WriteCommandToLCD
+  1681 ;;		_WriteDataToLCD
+  1682 ;;		_InitLCD
+  1683 ;; This function uses a non-reentrant model
+  1684 ;;
+  1685                           
+  1686     0598                     _ToggleEpinOfLCD:	
+  1687                           ;psect for function _ToggleEpinOfLCD
+  1688                           
+  1689     0598                     l713:	
+  1690                           ;incstack = 0
+  1691                           ; Regs used in _ToggleEpinOfLCD: [wreg]
+  1692                           
+  1693                           
+  1694                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 6:  RA7 = 1;
+  1695     0598  1283               	bcf	3,5	;RP0=0, select bank0
+  1696     0599  1303               	bcf	3,6	;RP1=0, select bank0
+  1697     059A  1785               	bsf	5,7	;volatile
+  1698     059B                     l715:
+  1699                           
+  1700                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 7:  _delay((unsigned long)((500)*(4000000/4000000.0)));
+  1701     059B  30A6               	movlw	166
+  1702     059C  00F0               	movwf	??_ToggleEpinOfLCD
+  1703     059D                     u597:
+  1704     059D  0BF0               	decfsz	??_ToggleEpinOfLCD,f
+  1705     059E  2D9D               	goto	u597
+  1706     059F  0000               	nop
+  1707     05A0                     l717:
+  1708                           
+  1709                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 8:  RA7 = 0;
+  1710     05A0  1283               	bcf	3,5	;RP0=0, select bank0
+  1711     05A1  1303               	bcf	3,6	;RP1=0, select bank0
+  1712     05A2  1385               	bcf	5,7	;volatile
+  1713                           
+  1714                           ;C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad I
+      +                          nterfacing Code/Code/LCD.c: 9:  _delay((unsigned long)((500)*(4000000/4000000.0)));
+  1715     05A3  30A6               	movlw	166
+  1716     05A4  00F0               	movwf	??_ToggleEpinOfLCD
+  1717     05A5                     u607:
+  1718     05A5  0BF0               	decfsz	??_ToggleEpinOfLCD,f
+  1719     05A6  2DA5               	goto	u607
+  1720     05A7  0000               	nop
+  1721     05A8                     l131:
+  1722     05A8  0008               	return
+  1723     05A9                     __end_of_ToggleEpinOfLCD:
+  1724     007E                     btemp	set	126	;btemp
+  1725     007E                     wtemp0	set	126
+  1726                           
+  1727                           	psect	config
+  1728                           
+  1729                           ;Config register CONFIG @ 0x2007
+  1730                           ;	Oscillator Selection bits
+  1731                           ;	FOSC = INTOSCIO, INTOSC oscillator: I/O function on RA6/OSC2/CLKOUT pin, I/O function 
+      +                          on RA7/OSC1/CLKIN
+  1732                           ;	Watchdog Timer Enable bit
+  1733                           ;	WDTE = OFF, WDT disabled
+  1734                           ;	Power-up Timer Enable bit
+  1735                           ;	PWRTE = ON, PWRT enabled
+  1736                           ;	RA5/MCLR/VPP Pin Function Select bit
+  1737                           ;	MCLRE = ON, RA5/MCLR/VPP pin function is MCLR
+  1738                           ;	Brown-out Detect Enable bit
+  1739                           ;	BOREN = ON, BOD enabled
+  1740                           ;	Low-Voltage Programming Enable bit
+  1741                           ;	LVP = OFF, RB4/PGM pin has digital I/O function, HV on MCLR must be used for programmi
+      +                          ng
+  1742                           ;	Data EE Memory Code Protection bit
+  1743                           ;	CPD = OFF, Data memory code protection off
+  1744                           ;	Flash Program Memory Code Protection bit
+  1745                           ;	CP = OFF, Code protection off
+  1746     2007                     	org	8199
+  1747     2007  3F70               	dw	16240
+
+Data Sizes:
+    Strings     0
+    Constant    0
+    Data        0
+    BSS         0
+    Persistent  0
+    Stack       0
+
+Auto Spaces:
+    Space          Size  Autos    Used
+    COMMON           14      6       6
+    BANK0            80      0       0
+    BANK1            80      0       0
+    BANK2            48      0       0
+
+Pointer List with Targets:
+
+    None.
+
+Critical Paths under _main in COMMON
+
+    _main->_ClearLCDScreen
+    _main->_InitLCD
+    _WriteDataToLCD->_ToggleEpinOfLCD
+    _InitLCD->_WriteCommandToLCD
+    _GetKey->_READ_SWITCHES
+    _ClearLCDScreen->_WriteCommandToLCD
+    _WriteCommandToLCD->_ToggleEpinOfLCD
+
+Critical Paths under _main in BANK0
+
+    None.
+
+Critical Paths under _main in BANK1
+
+    None.
+
+Critical Paths under _main in BANK2
+
+    None.
+
+Call Graph Tables:
+
+ ---------------------------------------------------------------------------------
+ (Depth) Function   	        Calls       Base Space   Used Autos Params    Refs
+ ---------------------------------------------------------------------------------
+ (0) _main                                                 1     1      0     135
+                                              5 COMMON     1     1      0
+                     _ClearLCDScreen
+                             _GetKey
+                         _InitKeypad
+                            _InitLCD
+                     _WriteDataToLCD
+ ---------------------------------------------------------------------------------
+ (1) _WriteDataToLCD                                       2     2      0      30
+                                              1 COMMON     2     2      0
+                    _ToggleEpinOfLCD
+ ---------------------------------------------------------------------------------
+ (1) _InitLCD                                              2     2      0      30
+                                              3 COMMON     2     2      0
+                    _ToggleEpinOfLCD
+                  _WriteCommandToLCD
+ ---------------------------------------------------------------------------------
+ (1) _InitKeypad                                           0     0      0       0
+ ---------------------------------------------------------------------------------
+ (1) _GetKey                                               1     1      0      30
+                                              3 COMMON     1     1      0
+                      _READ_SWITCHES
+ ---------------------------------------------------------------------------------
+ (2) _READ_SWITCHES                                        3     3      0       0
+                                              0 COMMON     3     3      0
+ ---------------------------------------------------------------------------------
+ (1) _ClearLCDScreen                                       2     2      0      30
+                                              3 COMMON     2     2      0
+                  _WriteCommandToLCD
+ ---------------------------------------------------------------------------------
+ (2) _WriteCommandToLCD                                    2     2      0      30
+                                              1 COMMON     2     2      0
+                    _ToggleEpinOfLCD
+ ---------------------------------------------------------------------------------
+ (2) _ToggleEpinOfLCD                                      1     1      0       0
+                                              0 COMMON     1     1      0
+ ---------------------------------------------------------------------------------
+ Estimated maximum stack depth 2
+ ---------------------------------------------------------------------------------
+
+ Call Graph Graphs:
+
+ _main (ROOT)
+   _ClearLCDScreen
+     _WriteCommandToLCD
+       _ToggleEpinOfLCD
+   _GetKey
+     _READ_SWITCHES
+   _InitKeypad
+   _InitLCD
+     _ToggleEpinOfLCD
+     _WriteCommandToLCD
+   _WriteDataToLCD
+     _ToggleEpinOfLCD
+
+ Address spaces:
+Name               Size   Autos  Total    Cost      Usage
+BITCOMMON            E      0       0       0        0.0%
+EEDATA              80      0       0       0        0.0%
+NULL                 0      0       0       0        0.0%
+CODE                 0      0       0       0        0.0%
+COMMON               E      6       6       1       42.9%
+BITSFR0              0      0       0       1        0.0%
+SFR0                 0      0       0       1        0.0%
+BITSFR1              0      0       0       2        0.0%
+SFR1                 0      0       0       2        0.0%
+STACK                0      0       0       2        0.0%
+BANK0               50      0       0       3        0.0%
+BITSFR3              0      0       0       4        0.0%
+SFR3                 0      0       0       4        0.0%
+ABS                  0      0       0       4        0.0%
+BITBANK0            50      0       0       5        0.0%
+BITSFR2              0      0       0       5        0.0%
+SFR2                 0      0       0       5        0.0%
+BITBANK1            50      0       0       6        0.0%
+BANK1               50      0       0       7        0.0%
+BITBANK2            30      0       0       8        0.0%
+BANK2               30      0       0       9        0.0%
+DATA                 0      0       0      10        0.0%
+
+
+Microchip Technology PIC Macro Assembler V2.45 build 20230818022343 
+Symbol Table                                                                                   Thu Nov 23 10:48:32 2023
+
+                       l30 0679                         l31 0671                         l40 06A3  
+                       l34 07FD                         l51 06FA                         l43 06C4  
+                       l35 0692                         l27 057D                         l60 0724  
+                       l52 06F2                         l44 06BC                         l36 068A  
+                       l71 077B                         l63 0749                         l55 0713  
+                       l47 06E1                         l39 06AB                         l80 07A9  
+                       l72 0773                         l64 0741                         l56 070B  
+                       l48 06D9                         l83 07CA                         l75 0794  
+                       l67 0762                         l59 072C                         l92 07F4  
+                       l84 07C2                         l76 078C                         l68 075A  
+                       l87 07E3                         l79 07B1                         l88 07DB  
+                       u10 0664                         u11 0663                         u20 0677  
+                       u21 0676                         u30 067D                         u31 067C  
+                       u40 0690                         u41 068F                         u50 0696  
+                       u51 0695                         u60 06A9                         u61 06A8  
+                       u70 06AF                         u71 06AE                         u80 06C2  
+                       u81 06C1                         u90 06CC                         u91 06CB  
+                      l100 058A                        l131 05A8                        l140 0659  
+                      l134 05CB                        l137 05EE                        l149 0571  
+                      l713 0598                        l801 07C8                        l721 0664  
+                      l715 059B                        l811 07E7                        l723 0677  
+                      l717 05A0                        l821 05AA                        l901 0566  
+                      l813 07FA                        l805 07CE                        l741 06C2  
+                      l733 0696                        l831 05CA                        l823 05AD  
+                      l903 0568                        l807 07E1                        l751 06E5  
+                      l735 06A9                        l727 067D                        l719 065A  
+                      l825 05BE                        l817 07FC                        l753 06F8  
+                      l745 06CC                        l729 0690                        l841 0581  
+                      l833 0572                        l921 0593                        l913 058B  
+                      l827 05BF                        l771 0747                        l763 0717  
+                      l747 06DF                        l739 06AF                        l843 0583  
+                      l835 0575                        l851 05D0                        l923 0594  
+                      l915 058F                        l829 05C5                        l781 0766  
+                      l765 072A                        l757 06FE                        l845 0589  
+                      l837 0579                        l861 05EF                        l853 05E1  
+                      l917 0590                        l783 0779                        l775 074D  
+                      l759 0711                        l839 057E                        l871 0613  
+                      l863 05FF                        l855 05E2                        l919 0591  
+                      l793 079C                        l777 0760                        l769 0734  
+                      l881 0632                        l873 061C                        l865 0608  
+                      l857 05E8                        l849 05CD                        l795 07AF  
+                      l787 077F                        l891 0648                        l883 0636  
+                      l875 0622                        l867 060E                        l859 05ED  
+                      l789 0792                        l893 0651                        l885 0640  
+                      l877 0627                        l869 0612                        l799 07B5  
+                      l895 0653                        l887 0646                        l879 062C  
+                      l897 0655                        l889 0647                        l899 0657  
+                      _RA0 0028                        _RA1 0029                        _RB0 0030  
+                      _RA2 002A                        _RB1 0031                        _RA3 002B  
+                      _RB2 0032                        _RB3 0033                        _RB4 0034  
+                      _RA6 002E                        _RB5 0035                        _RA7 002F  
+                      _RB6 0036                        _RB7 0037                        u100 06DF  
+                      u101 06DE                        u110 06E5                        u111 06E4  
+                      u200 0760                        u120 06F8                        u201 075F  
+                      u121 06F7                        u210 0766                        u130 06FE  
+                      u211 0765                        u131 06FD                        u300 07E1  
+                      u220 0779                        u140 0711                        u301 07E0  
+                      u221 0778                        u141 0710                        u310 07E7  
+                      u230 077F                        u150 0717                        u311 07E6  
+                      u231 077E                        u151 0716                        u320 07FA  
+                      u240 0792                        u160 072A                        u321 07F9  
+                      u241 0791                        u161 0729                        u250 079C  
+                      u170 0734                        u251 079B                        u171 0733  
+                      u260 07AF                        u180 0747                        u340 0589  
+                      u261 07AE                        u181 0746                        u341 0588  
+                      u270 07B5                        u190 074D                        u335 05B4  
+                      u271 07B4                        u191 074C                        u407 063B  
+                      u280 07C8                        u281 07C7                        u417 064C  
+                      u290 07CE                        u291 07CD                        u507 073A  
+                      u427 066A                        u355 05D7                        u517 0753  
+                      u437 0683                        u607 05A5                        u527 076C  
+                      u447 069C                        u537 0785                        u457 06B5  
+                      u377 0603                        u547 07A2                        u467 06D2  
+                      u387 0617                        u557 07BB                        u477 06EB  
+                      u397 0629                        u567 07D4                        u487 0704  
+                      u577 07ED                        u497 071D                        u587 056C  
+                      u597 059D                       _main 058B                       btemp 007E  
+                     start 0000            __end_of_InitLCD 065A                      ?_main 0070  
+                    _CMCON 001F                      _PORTA 0005                      _PORTB 0006  
+                    _TRISB 0086                      status 0003                      wtemp0 007E  
+          _ToggleEpinOfLCD 0598                 _InitKeypad 0572            __initialization 07FE  
+             __end_of_main 0598                     ??_main 0075           ??_ClearLCDScreen 0073  
+            _READ_SWITCHES 065A                     _TRISA0 0428                     _TRISA1 0429  
+                   _TRISA2 042A                     _TRISA3 042B                     _TRISA6 042E  
+                   _TRISA7 042F                  ??_InitLCD 0073                     _GetKey 057E  
+           ?_READ_SWITCHES 0070    __end_of_ToggleEpinOfLCD 05A9    __end_of__initialization 07FE  
+              ?_InitKeypad 0070             __pcstackCOMMON 0070   WriteCommandToLCD@Command 0072  
+           _WriteDataToLCD 05CC                    ?_GetKey 0070                 __pmaintext 058B  
+    WriteDataToLCD@LCDChar 0072            ??_READ_SWITCHES 0070     __end_of_WriteDataToLCD 05EF  
+         ?_ToggleEpinOfLCD 0070                    _InitLCD 05EF                    __ptext1 05CC  
+                  __ptext2 05EF                    __ptext3 0572                    __ptext4 057E  
+                  __ptext5 065A                    __ptext6 0566                    __ptext7 05A9  
+                  __ptext8 0598                    main@Key 0075       end_of_initialization 07FE  
+          ?_WriteDataToLCD 0070                  GetKey@key 0073               ??_InitKeypad 0070  
+           __end_of_GetKey 058B        start_initialization 07FE         __end_of_InitKeypad 057E  
+                 ??_GetKey 0073                  ___latbits 0000                   ?_InitLCD 0070  
+         ??_WriteDataToLCD 0071      __end_of_READ_SWITCHES 07FE             _ClearLCDScreen 0566  
+        _WriteCommandToLCD 05A9         ?_WriteCommandToLCD 0070        ??_WriteCommandToLCD 0071  
+   __end_of_ClearLCDScreen 0572  __end_of_WriteCommandToLCD 05CC          ??_ToggleEpinOfLCD 0070  
+          ?_ClearLCDScreen 0070                 _OPTION_REG 0081  

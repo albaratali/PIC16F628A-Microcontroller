@@ -1,35 +1,23 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"15 main.c
-[; ;main.c: 15: void InitKeypad(void);
-[; ;main.c: 15:         ClearLCDScreen();
+"14 main.c
+[; ;main.c: 14: void InitKeypad(void);
+[; ;main.c: 14:         key=GetKey();
 [v _InitKeypad `(v ~T0 @X0 0 ef ]
-"16
-[; ;main.c: 16: void InitLCD(void);
-[; ;main.c: 16:         clcd_putch(key,(0x80 + 5));
+"15
+[; ;main.c: 15: void InitLCD(void);
+[; ;main.c: 15:         ClearLCDScreen();
 [v _InitLCD `(v ~T0 @X0 0 ef ]
 [p mainexit ]
-"767 C:/Users/faizan/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f628a.h
-[; ;C:/Users/faizan/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f628a.h: 767: extern volatile unsigned char CMCON __attribute__((address(0x01F)));
-[v _CMCON `Vuc ~T0 @X0 0 e@31 ]
-"14 main.c
-[; ;main.c: 14: char GetKey(void);
-[; ;main.c: 14:         key=GetKey();
+"33 ./Keypad.h
+[; ;./Keypad.h: 33: unsigned char GetKey(void);
 [v _GetKey `(uc ~T0 @X0 0 ef ]
-"13
+"13 main.c
 [; ;main.c: 13: void ClearLCDScreen(void);
 [; ;main.c: 13: 
 [v _ClearLCDScreen `(v ~T0 @X0 0 ef ]
-"46 ./LED.h
-[; ;./LED.h: 46: void clcd_putch(const char data, unsigned char addr);
+"44 ./LED.h
+[; ;./LED.h: 44: void clcd_putch(const unsigned char data, unsigned char addr);
 [v _clcd_putch `(v ~T0 @X0 0 ef2`Cuc`uc ]
-"17 main.c
-[; ;main.c: 17: void clcd_write(unsigned char byte, unsigned char mode) ;
-[; ;main.c: 17:     }
-[v _clcd_write `(v ~T0 @X0 0 ef2`uc`uc ]
-[v F164 `(v ~T0 @X0 1 tf1`ul ]
-"20 C:\Program Files\Microchip\xc8\v2.45\pic\include\builtins.h
-[v __delay `JF164 ~T0 @X0 0 e ]
-[p i __delay ]
 "54 C:/Users/faizan/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f628a.h
 [; ;C:/Users/faizan/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f628a.h: 54: __asm("INDF equ 00h");
 [; <" INDF equ 00h ;# ">
@@ -141,62 +129,46 @@ Version 4.0 HI-TECH Software Intermediate Code
 "1269
 [; ;C:/Users/faizan/.mchp_packs/Microchip/PIC16Fxxx_DFP/1.6.156/xc8\pic\include\proc\pic16f628a.h: 1269: __asm("VRCON equ 09Fh");
 [; <" VRCON equ 09Fh ;# ">
-"20 main.c
-[; ;main.c: 20: void ClearLCDScreen(void)
+"17 main.c
+[; ;main.c: 17:     }
 [p x WDTE  =OFF  ]
-"22
-[; ;main.c: 22:     clcd_write(0x01, 0);
+"19
+[; ;main.c: 19: }
 [v _init_config `(v ~T0 @X0 1 sf ]
 {
 [e :U _init_config ]
 [f ]
-"25
+"22
 [e ( _InitKeypad ..  ]
-"26
+"23
 [e ( _InitLCD ..  ]
-"27
+"24
 [e :UE 55 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"29
+"26
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"30
+"27
 [e ( _init_config ..  ]
-"31
+"28
 [v _key `uc ~T0 @X0 1 a ]
-[e = _key -> -> 110 `ui `uc ]
-"32
-[e = _CMCON -> -> 7 `i `uc ]
-"34
+"31
 [e :U 58 ]
 {
-"36
-[e = _key -> ( _GetKey ..  `uc ]
-"37
+"33
+[e = _key ( _GetKey ..  ]
+"34
 [e ( _ClearLCDScreen ..  ]
-"38
-[e ( _clcd_putch (2 , -> _key `uc -> + -> 128 `i -> 5 `i `uc ]
-"39
+"35
+[e ( _clcd_putch (2 , _key -> + -> 128 `i -> 5 `i `uc ]
+"36
 }
 [e :U 57 ]
 [e $U 58  ]
 [e :U 59 ]
-"41
+"38
 [e :UE 56 ]
-}
-"42
-[v _ClearLCDScreen `(v ~T0 @X0 1 ef ]
-"43
-{
-[e :U _ClearLCDScreen ]
-[f ]
-"44
-[e ( _clcd_write (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"45
-[e ( __delay (1 -> * -> -> 500 `i `d / -> -> 20000000 `l `d .4000000.0 `ul ]
-"46
-[e :UE 60 ]
 }

@@ -1,6 +1,6 @@
 /*
  * File:   LED.c
- * Author: faizan
+ * Author: abamishu
  *
  * Created on November 19, 2023, 10:35 AM
  */
@@ -46,11 +46,12 @@ static void init_display_controller(void)
     __delay_us(100);
 }
 
-void clcd_putch(const char data, unsigned char addr)
+void clcd_putch(const unsigned char data, unsigned char addr)
 {
     clcd_write(addr, INST_MODE);
     clcd_write(data, DATA_MODE);
 }
+
 
 void clcd_write(unsigned char byte, unsigned char mode)   // byte -> 'A', 1
 {
@@ -67,4 +68,9 @@ void clcd_write(unsigned char byte, unsigned char mode)   // byte -> 'A', 1
     LCD_E = LOW;
     
     __delay_us(4100); // 4.1msec
+}
+void ClearLCDScreen(void)
+{
+    clcd_write(CLEAR_DISP_SCREEN, INST_MODE);
+    __delay_us(500);
 }

@@ -1184,8 +1184,9 @@ extern __bank0 __bit __timeout;
 # 9 "keypad.c" 2
 
 # 1 "./Keypad.h" 1
-# 31 "./Keypad.h"
-char GetKey(void);
+# 32 "./Keypad.h"
+static unsigned char scan_keypad(void);
+unsigned char GetKey(void);
 # 10 "keypad.c" 2
 
 
@@ -1194,22 +1195,20 @@ char GetKey(void);
 void InitKeypad(void) {
 
 
-    PORTB=0x00;
+
     TRISB=0xF0;
-    nRBPU=0;
+
+    OPTION_REGbits.nRBPU = 0;
 
     RB0=1;
     RB1=1;
     RB2=1;
     RB3=1;
 
-
-
-
 }
 
 static unsigned char scan_keypad(void){
-    int i;
+
     RB0=0;
     RB1=1;
     RB2=1;
@@ -1301,10 +1300,10 @@ static unsigned char scan_keypad(void){
 }
 
 
-char GetKey()
+unsigned char GetKey(void)
 {
-   unsigned char key= 0xFF;
-    while(key==0xFF){
+   unsigned char key;
+    while(1){
         key=scan_keypad();
         return key;
     }

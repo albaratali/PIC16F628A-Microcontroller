@@ -4,8 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>Keypad.h</itemPath>
       <itemPath>LED.h</itemPath>
+      <itemPath>Keypad.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -24,6 +24,11 @@
       <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
+  <sourceRootList>
+    <Elem>C:/Users/faizan/OneDrive/Desktop/PIC16F628A 4bit LCD Code/PIC16F628A 4bit LCD Code/Code</Elem>
+    <Elem>C:/Users/faizan/OneDrive/Desktop/PIC16F628A Keypad Interfacing Code/PIC16F628A Keypad Interfacing Code/Code</Elem>
+    <Elem>.</Elem>
+  </sourceRootList>
   <projectmakefile>Makefile</projectmakefile>
   <confs>
     <conf name="default" type="2">

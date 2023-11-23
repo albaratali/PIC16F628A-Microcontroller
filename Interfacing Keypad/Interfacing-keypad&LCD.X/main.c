@@ -1,6 +1,6 @@
 /*
  * File:   main.c
- * Author: faizan
+ * Author: abamishu
  *
  * Created on November 18, 2023, 2:49 PM
  */
@@ -11,11 +11,8 @@
 #include "LED.h"
 
 void ClearLCDScreen(void);
-char GetKey(void);
 void InitKeypad(void);
 void InitLCD(void);
-void clcd_write(unsigned char byte, unsigned char mode) ;
-void clcd_print(const char *str, unsigned char addr);
 
 #pragma config WDTE =OFF // watchdog timer disabled
 
@@ -28,8 +25,8 @@ static void init_config(void) {
 
 void main(void) {
     init_config(); // calling initializing function
-    unsigned char key='n';
-    CMCON =0x07;
+    unsigned char key;
+   // CMCON =0x07;
     
     while (1) {
         // write application code here
@@ -39,8 +36,4 @@ void main(void) {
     }
 
 }
-void ClearLCDScreen(void)
-{
-    clcd_write(CLEAR_DISP_SCREEN, INST_MODE);
-    __delay_us(500);
-}
+

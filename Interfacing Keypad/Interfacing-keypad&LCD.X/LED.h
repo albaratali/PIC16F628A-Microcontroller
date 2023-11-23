@@ -1,6 +1,6 @@
 /* 
  * File:   LED.h
- * Author: faizan
+ * Author: abamishu
  *
  * Created on November 19, 2023, 10:36 AM
  */
@@ -40,10 +40,9 @@
 #define CLEAR_DISP_SCREEN           0x01
 #define DISP_ON_AND_CURSOR_OFF      0x0C
 
-
 static void init_display_controller(void);
-void clcd_print(const char *str, unsigned char addr);
-void clcd_putch(const char data, unsigned char addr);
-void clcd_write(unsigned char byte, unsigned char mode) ;
+void clcd_putch(const unsigned char data, unsigned char addr);
+void clcd_write(unsigned char byte, unsigned char mode);
+void ClearLCDScreen(void);
 #endif	/* LED_H */
 

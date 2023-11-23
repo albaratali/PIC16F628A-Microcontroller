@@ -1,6 +1,6 @@
 /*
  * File:   keypad.c
- * Author: faizan
+ * Author: abamishu
  *
  * Created on November 18, 2023, 2:53 PM
  */
@@ -8,28 +8,26 @@
 
 #include <xc.h>
 #include "Keypad.h"
-#define _XTAL_FREQ      20000000
+
 #pragma config WDTE =OFF // watchdog timer disabled
 
 void InitKeypad(void) {
     // write your initialization code here
 
-    Keypad_PORT=0x00;
-    Keypad_PORT_Dir=0xF0;
-    nRBPU=0;
-    //Option_REG &= 0x7F;
+    
+    Keypad_PORT_Dir=0x0F;//setting RB0-RB3 as a input & RB4-RB7 as a output
+    
+    OPTION_REGbits.nRBPU = 0; // Enable internal pull-ups
+   
     ROW1=HI;
     ROW2=HI;
     ROW3=HI;
     ROW4=HI;
     
-    
-    
-    
 }
 
 static unsigned char scan_keypad(void){
-    int i;
+ 
     ROW1=LOW;
     ROW2=HI;
     ROW3=HI;
@@ -121,10 +119,10 @@ static unsigned char scan_keypad(void){
 }
 
 
-char GetKey()
+unsigned char GetKey(void)
 {
-   unsigned char key= ALL_RELEASED;
-    while(key==ALL_RELEASED){
+   unsigned char key;
+    while(1){
         key=scan_keypad();
         return key;
     }

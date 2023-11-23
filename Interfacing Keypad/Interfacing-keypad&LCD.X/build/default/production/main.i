@@ -1184,25 +1184,23 @@ extern __bank0 __bit __timeout;
 # 9 "main.c" 2
 
 # 1 "./Keypad.h" 1
-# 31 "./Keypad.h"
-char GetKey(void);
+# 32 "./Keypad.h"
+static unsigned char scan_keypad(void);
+unsigned char GetKey(void);
 # 10 "main.c" 2
 
 # 1 "./LED.h" 1
-# 44 "./LED.h"
+# 43 "./LED.h"
 static void init_display_controller(void);
-void clcd_print(const char *str, unsigned char addr);
-void clcd_putch(const char data, unsigned char addr);
-void clcd_write(unsigned char byte, unsigned char mode) ;
+void clcd_putch(const unsigned char data, unsigned char addr);
+void clcd_write(unsigned char byte, unsigned char mode);
+void ClearLCDScreen(void);
 # 11 "main.c" 2
 
 
 void ClearLCDScreen(void);
-char GetKey(void);
 void InitKeypad(void);
 void InitLCD(void);
-void clcd_write(unsigned char byte, unsigned char mode) ;
-void clcd_print(const char *str, unsigned char addr);
 
 #pragma config WDTE =OFF
 
@@ -1215,8 +1213,8 @@ static void init_config(void) {
 
 void main(void) {
     init_config();
-    unsigned char key='n';
-    CMCON =0x07;
+    unsigned char key;
+
 
     while (1) {
 
@@ -1225,9 +1223,4 @@ void main(void) {
         clcd_putch(key,(0x80 + 5));
     }
 
-}
-void ClearLCDScreen(void)
-{
-    clcd_write(0x01, 0);
-    _delay((unsigned long)((500)*(20000000/4000000.0)));
 }
